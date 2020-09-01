@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+
+<title>SignUp and Login</title>
+<link rel="stylesheet" type="text/css" href="/css/style-sign.css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<body style="background-color: #009eff14;">
+	<div th:if="${emailNotExist}" class="alert alert-danger">Email doesn't exist.</div>
+	<div th:if="${forgetPasswordEmailSent}" class="alert alert-success">Email sent.</div>
+	<div th:if="${param.error != null}" style="color:red;">Incorrect username or password.</div>
+	<div class="alert alert-info" th:if="${emailSent}">An email has
+		been sent to the email address you just registered. Please validate
+		your email address and update your password information.</div>
+	<label for="newUsername"></label>&nbsp;
+	<span style="color: red;" th:if="${usernameExists}">Username
+		already exists. Choose a different one.</span>
+	<label for="email"></label>
+	<span style="color: red;" th:if="${emailExists}">Email already
+		exists. Choose a different one.</span>
+
+	<div class="container" id="container" style="margin-top: 20px;">
+
+		<div class="form-container sign-up-container">
+
+			<form th:action="@{/newUser}" method="post">
+
+				<h1>Create Account</h1>
+
+				<input required="required" type="text" placeholder="Username" style="color: black;"
+					id="newUsername" name="username" /> <input required="required" style="color: black;"
+					type="email" placeholder="Email" id="email" name="email" />
+				<br/>
+
+				<button type="submit" style="cursor: pointer;">SignUp</button>
+			</form>
+		</div>
+
+		<div class="form-container sign-in-container">
+			<form th:action="@{/login}" method="post">
+				<h3>
+					<span>Cafe 9</span><br /><br />
+				</h3>
+				
+				<label for="username"></label> <input style="color: black;"
+												required="required" type="text" placeholder="Username"
+												id="username" name="username" />
+				<label for="password"></label> <input
+												required="required" type="password" placeholder="Password"
+												id="password" name="password" /> 
+				<a class="forgot" id="forgotPassword" style="cursor: pointer;">Forgot Password?</a>
+				<button type="submit" style="cursor: pointer;">Sign In</button>
+				</form>
+				
+		</div>
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-left">
+					<h1>Welcome Back!</h1>
+					<p>To munch with us please login with your registered
+						info</p>
+					<button class="ghost" id="signIn" style="cursor: pointer;">Sign In</button>
+				</div>
+				<div class="overlay-panel overlay-right">
+					<h1>Hello, Friend!</h1>
+					<p>Enter your details and start munching with us</p>
+					<button class="ghost" id="signUp" style="cursor: pointer;">Sign Up</button>
+				</div>
+			</div>
+			<div id="myModal" class="modal">
+
+				<!-- Modal content -->
+				<div class="modal-content">
+					<span class="close">&times;</span>
+					<form th:action="@{/forgetPassword}" method="post">
+						<h3>Forgot Password</h3>
+
+						<label for="recoverEmail"></label> <input style="color: black;"
+												required="required" type="text" placeholder="Email"
+												id="recoverEmail" name="email" />
+
+						<button type="submit" style="cursor: pointer;">Submit</button>
+					</form>
+
+
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+
+const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+
+signUpButton.addEventListener('click', () => {
+	container.classList.add("right-panel-active");
+	var classActiveSignup = true;
+});
+signInButton.addEventListener('click', () => {
+	container.classList.remove("right-panel-active");
+});
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+//Get the button that opens the modal
+var btn = document.getElementById("forgotPassword");
+
+
+var span = document.getElementsByClassName("close")[0];
+
+//When the user clicks on the button, open the modal
+btn.onclick = function() {
+modal.style.display = "block";
+}
+
+
+span.onclick = function() {
+modal.style.display = "none";
+}
+
+</script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+
+
+	<script th:src="@{/js/jquery.dataTables.min.js}"></script>
+	<script th:src="@{/js/dataTables.bootstrap.min.js}"></script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+
+<link rel="stylesheet" href="/css/w3.css" />
+<link rel="stylesheet" href="/css/font.css" />
+<link rel="stylesheet" href="/css/signup.css" />
+<style>
+body, html {
+	height: 100%
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+	font-family: "Amatic SC", sans-serif
+}
+
+body {
+	background-image: url(/image/bg1.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-height: 100%;
+}
+
+.split {
+	height: 100%;
+	width: 50%;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	overflow-x: hidden;
+	padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+	left: 0;
+	background-color: #50767c;
+}
+
+/* Control the right side */
+.right {
+	right: 0;
+	background-color: rgb(177, 211, 211);
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+.top {
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+/* Style the image inside the centered container, if needed */
+.centered img {
+	width: 150px;
+	border-radius: 50%;
+}
+
+h1 {
+	font-family: 'roboto';
+	font-weight: 300;
+}
+
+h4 {
+	font-family: 'roboto';
+	font-weight: 300;
+}
+</style>
+
+<body>
+<div class="w3-top w3-hide-small">
+		<div class="w3-bar w3-xlarge w3-black w3-opacity w3-hover-opacity-off"
+			id="myNavbar">
+			<a th:href="@{/}" class="w3-bar-item w3-button">HOME</a> <a
+				th:href="@{/menu}" class="w3-bar-item w3-button">MENU</a> <a
+				href="#about" class="w3-bar-item w3-button">ABOUT</a> <a
+				th:href="@{/shoppingCart/cart}" class="w3-bar-item w3-button">ORDER
+				CART</a> <a sec:authorize="isAnonymous()" th:href="@{/login}"
+				class="w3-bar-item w3-button">LOGIN </a> <a
+				sec:authorize="isAuthenticated()" th:href="@{/myProfile}"
+				class="w3-bar-item w3-button">PROFILE</a> <a
+				sec:authorize="isAuthenticated()" th:href="@{/logout}"
+				class="w3-bar-item w3-button">LOGOUT</a>
+		</div>
+	</div>
+
+	<div th:if="${classActiveLogin}">
+		<div class="centered">
+			<div class='bold-line'></div>
+			<div class='container'>
+				<div class='window'>
+					<div class='overlay'></div>
+					<div class='content'>
+						<div class='welcome'>TIAA Cafeteria</div>
+						<br />
+						<div class='subtitle'>Welcome!</div>
+
+						<div th:if="${param.error != null}" style="color: red;">Incorrect
+							username or password.</div>
+						<form th:action="@{/login}" method="post">
+							<div class='input-fields'>
+								<label for="username"></label><input required="required"
+									type="text" id="username" name="username"
+									placeholder='Username' class='input-line full-width' /> <label
+									for="password"></label><input required="required"
+									type="password" id="password" name="password"
+									placeholder='Password' class='input-line full-width' />
+
+							</div>
+							<div class='spacing'>
+								Don't have an account? <a th:href="@{/signup}"
+									style="text-decoration: none;"> <span class='highlight'>Create
+										Account</span></a><br /> <a th:href="@{/forget}"
+									style="text-decoration: none;"> <span class='highlight'>Forgot
+										Password?</span></a>
+							</div>
+
+							<div>
+								<button type="submit" class='ghost-round full-width'>Sign
+									In</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div th:if="${classActiveSignup}">
+		<div class="centered">
+			<div class='bold-line'></div>
+			<div class='container'>
+				<div class='window'>
+					<div class='overlay'></div>
+					<div class='content'>
+						<div class='welcome'>TIAA Cafeteria</div>
+						<br />
+						<div class='subtitle'>Welcome!</div>
+						<div class="alert alert-info" th:if="${emailSent}">An email
+							has been sent to the email address you just registered. Please
+							validate your email address and update your password information.</div>
+						<form th:action="@{/newUser}" method="post">
+							<div class='input-fields'>
+
+								<label for="newUsername"></label>&nbsp;<span style="color: red;"
+									th:if="${usernameExists}">Username already exists.
+									Choose a different one.</span> <input required="required" type="text"
+									placeholder='Username' class='input-line full-width'
+									id="newUsername" name="username" /> <label for="email"></label><span
+									style="color: red;" th:if="${emailExists}">Email already
+									exists. Choose a different one.</span> <input required="required"
+									type="text" placeholder='Email' class='input-line full-width'
+									id="email" name="email" />
+
+							</div>
+							<div class='spacing'>
+								Already have an account? <a th:href="@{/login}"
+									style="text-decoration: none;"> <span class='highlight'>Log
+										In</span></a>
+							</div>
+							<div>
+								<button type="submit" class='ghost-round full-width'>Create
+									Account</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div th:if="${classActiveForget}">
+	<div class="centered">
+        <div class='bold-line'></div>
+        <div class='container'>
+          <div class='window'>
+            <div class='overlay'></div>
+            <div class='content'>
+              <div class='welcome'>TIAA Cafeteria</div><br/>
+              <div class='subtitle'>Welcome!</div>
+              <div th:if="${emailNotExist}" class="alert alert-danger" style="color: red;">Email doesn't exist.</div>
+									<div th:if="${forgetPasswordEmailSent}" class="alert alert-success">Email sent.</div>
+									<form th:action="@{/forgetPassword}" method="post">
+              <div class='input-fields'>
+                
+                <label for="recoverEmail"></label> <input
+												required="required" type="text" placeholder='Email' class='input-line full-width'
+												id="recoverEmail" name="email" />
+                
+              
+              </div>
+              <div class='spacing'><a th:href="@{/login}" style="text-decoration: none;"> <span class='highlight'>Sign In?</span></a></div>
+
+              <div><button class='ghost-round full-width'>Send Link</button></div>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+    </div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	
+	
+		<script th:src="@{/js/jquery.dataTables.min.js}"></script>
+		<script th:src="@{/js/dataTables.bootstrap.min.js}"></script>
+</body>
+</html> -->
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header" />
+
+<body style="background-image: url('/image/zomato.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
+	<div th:replace="common/header :: navbar" />
+
+	<div class="container">
+		
+		<div class="row" style="margin-top: 200px;">
+			<div class="col-xs-4 col-xs-offset-2" style=" margin-left: 200px;">
+
+				Nav tabs
+				<ul class="nav nav-tabs">
+					<li th:classappend="${classActiveNewAccount}? 'active'"><a
+						href="#tab-1" data-toggle="tab"><span style="color: red;">Create
+								new account</span></a></li>
+					<li th:classappend="${classActiveLogin}? 'active'"><a
+						href="#tab-2" data-toggle="tab"><span style="color: red;">Log
+								in</span></a></li>
+					<li th:classappend="${classActiveForgetPassword}? 'active'"><a
+						href="#tab-3" data-toggle="tab"><span style="color: red;">Forget
+								Password</span></a></li>
+				</ul>
+
+				Tab panels
+				<div class="tab-content">
+
+					create new user pane
+					<div class="tab-pane fade" id="tab-1"
+						th:classappend="${classActiveNewAccount}? 'in active'">
+						<div class="panel-group">
+							<div class="panel panel-default" style="border: none;">
+								<div class="panel-body"
+									style="background-color: #ededed; margin-top: 20px;">
+									<div class="alert alert-info" th:if="${emailSent}">An
+										email has been sent to the email address you just registered.
+										Please validate your email address and update your password
+										information.</div>
+									<form th:action="@{/newUser}" method="post">
+										<div class="form-group">
+											<label for="newUsername">* Username: </label>&nbsp;<span
+												style="color: red;" th:if="${usernameExists}">Username
+												already exists. Choose a different one.</span> <input
+												required="required" type="text" class="form-control"
+												id="newUsername" name="username" />
+											<p style="color: #828282">Enter your username here.</p>
+										</div>
+
+										<div class="form-group">
+											<label for="email">* Email Address: </label><span
+												style="color: red;" th:if="${emailExists}">Email
+												already exists. Choose a different one.</span> <input
+												required="required" type="text" class="form-control"
+												id="email" name="email" />
+											<p style="color: #828282">A valid email address. All
+												emails from the system with be sent to this address. The
+												email address is not made public and will only be used if
+												you wish to receive a new password or wish to receive
+												certain notification.</p>
+										</div>
+
+										<button type="submit" class="btn btn-primary">Create
+											new account</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					log in
+					<div class="tab-pane fade" id="tab-2"
+						th:classappend="${classActiveLogin}? 'in active'">
+						<div class="panel-group">
+							<div class="panel panel-default" style="border: none;">
+								<div class="panel-body"
+									style="background-color: #ededed; margin-top: 20px;">
+									<div th:if="${param.error != null}" style="color:red;">Incorrect username or password.</div>
+									<form th:action="@{/login}" method="post">
+										<div class="form-group">
+											<label for="username">* Username: </label> <input
+												required="required" type="text" class="form-control"
+												id="username" name="username" />
+											<p style="color: #828282">Enter your username here.</p>
+										</div>
+
+										<div class="form-group">
+											<label for="password">* Password: </label> <input
+												required="required" type="password" class="form-control"
+												id="password" name="password" />
+											<p style="color: #828282">Enter the password that
+												accompanies your username</p>
+										</div>
+
+										<button type="submit" class="btn btn-primary">Log in</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					forget password
+					<div class="tab-pane fade" id="tab-3"
+						th:classappend="${classActiveForgetPassword}? 'in active'">
+						<div class="panel-group">
+							<div class="panel panel-default" style="border: none;">
+								<div class="panel-body"
+									style="background-color: #ededed; margin-top: 20px;">
+									<div th:if="${emailNotExist}" class="alert alert-danger">Email doesn't exist.</div>
+									<div th:if="${forgetPasswordEmailSent}" class="alert alert-success">Email sent.</div>
+									<form th:action="@{/forgetPassword}" method="post">
+										<div class="form-group">
+											<label for="recoverEmail">* Your Email: </label> <input
+												required="required" type="text" class="form-control"
+												id="recoverEmail" name="email" />
+											<p style="color: #828282">Enter your registered email
+												address here.</p>
+										</div>
+
+										<button type="submit" class="btn btn-primary">Submit</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	
+	end of container
+
+
+	<div th:replace="common/header :: body-bottom-scripts" />
+</body>
+</html> -->

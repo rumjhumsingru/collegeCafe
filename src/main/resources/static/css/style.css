@@ -1,0 +1,170 @@
+body {
+	
+}
+
+.overlay-txt {
+	position: absolute;
+	top: 0; bottom : 0;
+	left: 50; right : 0;
+	height: 100%;
+	width: 73%;
+	opacity: 0;
+	transition: .5s ease;
+	background-color: #008CBA;
+	bottom: 0; left : 50;
+	right: 0;
+}
+
+.container-img:hover .overlay-txt {
+	opacity: 1;
+}
+
+.text-img {
+	color: white;
+	font-size: 20px;
+	position: absolute;
+	top: 50%;
+	left: 57%;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+}
+
+.parallax {
+	background-image: url("/image/home.jpg");
+	height: 2000px;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#category {
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+.category-item  {
+	position: relative;
+	display: block;
+	padding: 10px 15px;
+	margin-bottom: -1px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+}
+
+
+#square {
+	height: 50px;
+	width: 50px;
+	background-color: #555;
+}
+
+.category-item.active, .category-item.active:focus, .category-item.active:hover
+	{
+	z-index: 2;
+	color: #fff;
+	border-right: 4px solid darkblue;
+}
+
+
+#shelf {
+	background-image: url("/image/background-adare-restaurant.jpg");
+	opacity: 1.0;
+	background-repeat: repeat;
+	background-size: 1600px;
+}
+
+#shelf-submit {
+	background-image: url("/image/board.jpg");
+	opacity: 1.0;
+	background-repeat: repeat;
+	background-size: 1600px;
+}
+
+#shelf-check {
+	background-image: url("/image/check_back.jpg");
+	opacity: 1.0;
+	background-repeat: repeat;
+	background-size: 1600px;
+}
+
+#shelf-acc {
+	background-image: url("/image/zomato.jpg");
+	opacity: 1.0;
+	background-repeat: repeat;
+	background-size: 1600px;
+}
+
+#item-back {
+	background-color: rgba(255, 255, 255, 0.5);
+	width: 1000px;
+	border-radius: 15px;
+	height: 120px;
+	margin-left: 50px;
+}
+
+#item-back-cart {
+	background-color: rgba(255, 255, 255, 0.5);
+	width: 1300px;
+	border-radius: 10px;
+	height: 120px;
+	margin-left: 50px;
+}
+
+.item-pic {
+	float: left;
+}
+
+hr {
+	border: 5px solid #eee;
+	width: 90%;
+	/* border: none;
+	height: 1px;
+	color: #333;
+	background-color: #333; */
+}
+
+.bs-example {
+	margin: 50px;
+	margin-left: 50px;
+}
+
+.item-row {
+	width: 60%;
+	margin-left: 50px;
+}
+
+.container {
+	width: 90%;
+}
+
+.page-top {
+	margin-top: -70px;
+}
+
+.home-headline {
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 24px;
+	color: #fff;
+	margin: auto;
+	text-align: center;
+	margin-top: -13px;
+}
+
+.home-headline span {
+	background-color: #231F20;
+	padding: 5px 22px;
+}
+
+.section-headline {
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 24px;
+	color: #fff;
+	margin: auto;
+	text-align: center;
+	margin-top: 90px;
+}
+
+.section-headline span {
+	background-color: #231F20;
+	padding: 5px 22px;
+}

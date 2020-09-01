@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header" />
+<title>Cafe 9 - Menu</title>
+<link rel="stylesheet" href="/css/universal.css" />
+
+<link href="/css/font-awesome.min.css" rel="stylesheet" />
+
+<body style="background-color: white;">
+	
+	<div class="abc"
+			style="width: 100%; height: 200px; background-color: #82bfeb; z-index: -1; margin-top: -70px;">
+			<!-- <div style="margin-top: -130px; margin-left: 20px; font-family: Segoe UI;">
+			<span><i class="fa fa-chevron-circle-left"> Menu</i></span>
+			</div> -->
+			<div class="container">
+				<div class="row" style="margin-top: 70px;">
+				
+					<div class="col-md-6">
+					
+						<h2 style="margin-left: 100px;"><i class="fa fa-cutlery"></i> Menu</h2>
+					
+					</div>
+					<div class="col-md-6 text-right">
+						<h5 class="breadcrumb">
+							<a th:href="@{/}" style="cursor: pointer;">Home</a> / <a th:href="@{/menu}">menu</a>
+						</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	<div class="row" style="margin-left: 20px;">
+		<div class="col-xs-2" style="margin-top: -20px; margin-left: 0px;">
+		<div style="border: 2px solid black; background-color: #82bfeb">
+			<center>
+				<label for="category" style="color: white; font-size: 25px;">CATEGORY</label>
+			</center>
+			</div>
+			<div class="abc" id="category" style="color:black;">
+
+				<a th:href="@{/searchByCategory(category='Starters')}"
+					th:classappend="${activeStarters}? 'active'"
+					class="category-item w3-hover-light-blue"><b style="color: black;">Starters</b></a> <a
+					th:href="@{/searchByCategory(category='Sandwiches')}"
+					th:classappend="${activeSandwiches}? 'active'"
+					class="category-item w3-hover-light-blue"><b style="color: black;">Sandwiches &amp; Burgers</b></a> <a
+					th:href="@{/searchByCategory(category='Main Course')}"
+					th:classappend="${activeMainCourse}? 'active'"
+					class="category-item w3-hover-light-blue"><b style="color: black;">Main Course</b></a> <a
+					th:href="@{/searchByCategory(category='Rice')}"
+					th:classappend="${activeRice}? 'active'"
+					class="category-item w3-hover-light-blue"><b style="color: black;">Rice &amp; Noodles</b></a> <a
+					th:href="@{/searchByCategory(category='Continental')}"
+					th:classappend="${activeContinental}? 'active'"
+					class="category-item w3-hover-light-blue"><b style="color: black;">Continental</b></a> <a
+					th:href="@{/searchByCategory(category='Beverages')}"
+					th:classappend="${activeBeverages}? 'active'"
+					class="category-item w3-hover-light-blue"><b style="color: black;">Beverages</b></a> <a
+					th:href="@{/searchByCategory(category='Desserts')}"
+					th:classappend="${activeDesserts}? 'active'"
+					class="category-item w3-hover-light-blue"><b style="color: black;">Desserts</b></a>
+
+			</div>
+		</div>
+
+		<div class="col-xs-6" style="margin-top: 0px; padding-left: 20px; border-left: 1px solid #93959f;">
+			
+			<div class="w3-row w3-center"
+				style="color: white; font-size: 20px; width: 800px; border: 2px solid black; margin-top: -20px;">
+				<a th:href="@{/menu(category='all')}"
+					th:classappend="${activeAll}? 'active'">
+					<div class="w3-col s4 tablink w3-padding-large w3-hover-orange">All</div>
+				</a> <a th:href="@{/searchByType(type='Veg')}"
+					th:classappend="${activeVeg}? 'active'">
+					<div class="w3-col s4 tablink w3-padding-large w3-hover-green ">Veg</div>
+				</a> <a th:href="@{/searchByType(type='Non-Veg')}"
+					th:classappend="${activeNonVeg}? 'active'">
+					<div class="w3-col s4 tablink w3-padding-large w3-hover-red">Non-Veg</div>
+				</a>
+			</div>
+
+			<form th:action="@{/shoppingCart/addItem}" method="post">
+
+				<div
+					style="background-color: white; margin-top: 0px; font-size: 36px; width: 800px;">
+					<div th:if="${emptyList}">
+						<strong><h3 style="font-style: italic; margin-top: 50px; margin-left:300px; color: black;">UNAVAILABLE</h3></strong>
+					</div>
+					<div data-th-each="item: ${itemList}" >
+
+						<div th:if="${item != null}">
+							<form action="/shoppingCart/addItem">
+								<input hidden="hidden" th:value="${item.id}" id="id" name="id" />
+								<div class="row" style="padding-top: 0px;">
+									<div class="col-xs-2 container-img" style="padding-right: 0px; margin-top: 20px; margin-left: 50px;">
+										<img class="img-responsive shelf-item"
+											style="width: 100px; height: 80px; float: right; width: 80%; background-color: white; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
+											th:src="@{http://54.175.217.57/itemImages/}+${item.id}+'.png'" />
+											<div class="overlay-txt">
+												<div class="text-img">Order Me!!</div>
+											</div>
+									</div>
+
+									<div class="col-xs-6" style="float: left; margin-left:0px;">
+
+										<label style="font-size: 20px;">
+											<span style="padding-left: 20px; color: black;"
+												th:text="${item.name}"></span> <span
+												th:if="${item.type=='Veg'}"> <i
+												class="fa fa-dot-circle-o"
+												style="color: green; font-size: 15px;"></i>
+											</span> <span th:if="${item.type=='Non-Veg'}"> <i
+												class="fa fa-dot-circle-o"
+												style="color: red; font-size: 15px;"></i>
+											</span>
+										</label>
+										
+										<p style="padding-left: 20px; margin-top: -10px; line-height: normal; color: grey; font-size: 12px;"
+											th:text="${#strings.abbreviate(item.description, 500)}"></p>
+									</div>
+
+									<div class="col-xs-4"
+										style="padding-top: 0px; padding-bottom: 0px; margin-top: 20px; margin-left: -100px;">
+										<span class="w3-right w3-tag w3-dark-grey w3-round"
+											style="margin-right: 20px; margin-top: 10px; font-size: 20px;" 
+											th:text="'₹'+${#numbers.formatDecimal(item.ourPrice, 0, 'COMMA', 2, 'POINT')}"></span>
+										<p>
+										<select name="qty" class="w3-white"
+											style="font-size: 15px; font-family: serif; margin-left: 140px;">
+											<option th:each="qty : ${qtyList}" th:value="${qty}"
+												style="font-size: small;" th:text="${qty}"></option>
+										</select>
+										<button type="submit" class="btn btn-success btn-xs"
+											style="color: black; border: 1px solid black;  padding-top: 10px;">
+											<i class="fa fa-plus"></i>
+										</button>
+										</p>
+									</div>
+								</div>
+								
+							</form>
+						</div>
+
+					</div>
+				</div>
+
+			</form>
+		</div>
+				
+		<div class="col-xs-2" style="margin-top: -10px; margin-left: 110px; width: 350px;">
+		
+		<div  th:if="${cartEmpty} or ${#lists.size(cartItemList)==0}">
+		<label style="font-size: 30px; color: #93959f;">Cart Empty</label>
+			<img src="/image/cart_empty.png" style="width: 100%; height: 212px; opacity:0.5"/>
+		<label style="color: #93959f; margin-top: 20px;">Good food is always cooking! <br/> Go ahead, order some yummy <br/> items from the menu.</label>
+		</div>
+		
+		<div th:if="${cartFull} and ${#lists.size(cartItemList)!=0}">
+			<label style="font-size: 30px;">Cart Item</label>
+			<div style=" border: 0px solid black;">
+					<table class="table shop-cart table-hover">
+						<thead>
+							<tr>
+								<td><strong>Product</strong></td>
+								
+								<td>
+										<strong>Qty</strong>
+								</td>
+								<td class="hidden-xs"><strong>Price</strong></td>
+
+
+								<td></td>
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr th:each="cartItem : ${cartItemList}">
+
+								<td><strong><span th:text="${cartItem.item.name}"></span></strong></td>
+								<td>
+									<form th:action="@{/shoppingCart/updateCartItem}" method="post">
+										
+											<div class="form-group">
+
+												<label for="number"></label> <input hidden="hidden"
+													name="id" th:value="${cartItem.id}" /> <input
+													style="width: 80%;" required="required" type="number"
+													min="1" th:id="${cartItem.id}" th:name="qty"
+													th:disabled="${cartItem.item.inStockNumber==0}"
+													class="form-control cartItemQty" th:value="${cartItem.qty}" />
+
+
+											</div>
+										
+										<button style="margin-top: 0px; margin-left: 0px;"
+											th:id="'update-item-'+${cartItem.id}" type="submit"
+											class="btn btn-warning btn-xs">Update</button>
+									</form>
+								</td>
+								<td class="hidden-xs">
+									<label th:text="'₹'+${cartItem.item.ourPrice}"></label>
+								</td>
+
+								<td><a
+									th:href="@{/shoppingCart/removeItem?id=}+${cartItem.id}"><i
+										class="fa fa-times-circle-o fa-lg"></i></a></td>
+
+							</tr>
+						</tbody>
+					</table>
+					<table class="table" style="margin-top: -50px;">
+							<tbody>
+								<tr>
+									<td>Subtotal</td>
+									<th><span th:text="'₹'+${shoppingCart.grandTotal}" style="float: right; color: gray;"></span></th>
+								</tr>
+								<tr>
+									<td>Tax</td>
+									<th><span th:with="tax=${shoppingCart.grandTotal*0.06}"
+										th:text="'₹'+${#numbers.formatDecimal(tax, 0 ,2)}" style="float: right; color: gray;"></span></th>
+								</tr>
+
+								<tr>
+									<td><label>
+											<strong>Total</strong>
+										</label></td>
+									<th><label style="float: right;">
+											<span
+												th:with="total=${shoppingCart.grandTotal+shoppingCart.grandTotal*0.06}"
+												th:text="'₹'+${#numbers.formatDecimal(total, 0 ,2)}"></span>
+										</label></th>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<p style="margin-top: -30px;">
+						<a th:href="@{/checkout(id=${shoppingCart.id})}"
+							class="button btn btn-success" style="width: 250px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); margin-left: 40px; margin-top: 20px; height: 50px; cursor: pointer;"><label style="padding-top: 07px; cursor: pointer; font-size: 12px;">CHECKOUT</label></a>
+					</p>
+					</div>
+				
+		</div>
+	</div>
+
+
+
+	<!-- end of container -->
+
+
+	<div th:replace="common/header :: body-bottom-scripts" />
+	<script th:src="@{/js/scripts.js}"></script>
+</body>
+</html>
