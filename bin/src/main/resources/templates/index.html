@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<!-- Basic -->
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<!-- Mobile Metas -->
+<meta name="viewport"
+	content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+
+<!-- Site Metas -->
+<title>Cafe 9</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+
+<!-- Site Icons -->
+<!-- <link rel="shortcut icon" href="/fonts/favicon.ico" type="image/x-icon" /> -->
+<link rel="apple-touch-icon"
+	href="/image/images-home/apple-touch-icon.png" />
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<!-- Site CSS -->
+<link rel="stylesheet" href="/css/css-home/style.css" />
+<link rel="stylesheet" href="/css/css-home/style-announce.css" />
+<link rel="stylesheet" href="/css/font-awesome.min.css" />
+
+<!-- Responsive CSS -->
+<link rel="stylesheet" href="/css/css-home/responsive.css" />
+<!-- color -->
+<link id="changeable-colors" rel="stylesheet"
+	href="/css/colors/strong-blue.css" />
+
+<!-- Modernizer -->
+<script th:src="@{/js/js-home/modernizer.js}"></script>
+
+<body>
+	<div id="loader">
+		<div id="status"></div>
+	</div>
+	<div id="site-header">
+		<header id="header" class="header-block-top">
+			<div class="container">
+				<div class="row">
+					<div class="main-menu">
+						<!-- navbar -->
+						<nav class="navbar navbar-default" id="mainNav">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle collapsed"
+									data-toggle="collapse" data-target="#navbar"
+									aria-expanded="false" aria-controls="navbar">
+									<span class="sr-only">Toggle navigation</span> <span
+										class="icon-bar"></span> <span class="icon-bar"></span> <span
+										class="icon-bar"></span>
+								</button>
+
+							</div>
+							<div id="navbar" class="navbar-collapse collapse">
+								<ul class="nav navbar-nav navbar-left">
+									<li class="active"><a href="#banner">Home</a></li>
+									<li><a href="#about">About us</a></li>
+									<li><a href="#menu">Top Sellers</a></li>
+									<li><a href="#our_team">Team</a></li>
+									<li><a href="#gallery">Gallery</a></li>
+									<li><a href="#locate">Locate us</a></li>
+									<li><a href="#footer">Contact us</a></li>
+								</ul>
+
+
+								<ul class="nav navbar-nav navbar-right">
+									<li><a href="#">Announcements &#9662;</a>
+										<ul class="dropdown">
+
+											<li th:each="announcement: ${announcementList}"><label
+												style="padding-left: 10px; font-size: 15px; color: black;"
+												th:text="${announcement.heading}"></label>
+												<p
+													th:text="${announcement.description}"
+													style="padding-left: 10px; color: black; line-height: normal;"></p>
+												<hr id="announce" /></li>
+
+										</ul></li>
+									<li><a sec:authorize="isAnonymous()" th:href="@{/login}">Login</a></li>
+									<li><a sec:authorize="isAuthenticated()"
+										th:href="@{/myProfile}">Account</a></li>
+									<li><a sec:authorize="isAuthenticated()"
+										th:href="@{/logout}">Logout</a></li>
+								</ul>
+							</div>
+							<!-- end nav-collapse -->
+						</nav>
+						<!-- end navbar -->
+					</div>
+				</div>
+				<!-- end row -->
+			</div>
+			<!-- end container-fluid -->
+		</header>
+		<!-- end header -->
+	</div>
+	<!-- end site-header -->
+
+	<div id="banner" class="banner full-screen-mode parallax">
+		<div class="container pr">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="banner-static">
+					<div class="banner-text">
+						<div class="banner-cell">
+							<h1>
+								Order in for <span class="typer" id="some-id" data-delay="200"
+									data-delim=":" data-words="Breakfast:Lunch:Dinner"
+									data-colors="red"></span><span class="cursor"
+									data-cursorDisplay="_" data-owner="some-id"></span>
+							</h1>
+							<p>Welcome to the Cafeteria! Order with us to fulfill your
+								food cravings!</p>
+							<div class="book-btn">
+								<a th:href="@{/menu}"
+									class="table-btn hvr-underline-from-center">See Menu</a>
+							</div>
+							<a href="#about">
+								<div class="mouse"></div>
+							</a>
+						</div>
+						<!-- end banner-cell -->
+					</div>
+					<!-- end banner-text -->
+				</div>
+				<!-- end banner-static -->
+			</div>
+			<!-- end col -->
+		</div>
+		<!-- end container -->
+	</div>
+	<!-- end banner -->
+
+	<div id="about" class="about-main pad-top-100 pad-bottom-100">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="wow fadeIn" data-wow-duration="1s"
+						data-wow-delay="0.1s">
+						<h2 class="block-title">About Us</h2>
+						<h3>IT STARTED, QUITE SIMPLY, LIKE THIS...</h3>
+						<p>Do right and far exceed expectations daily.</p>
+						<p>We do the right thing and lead by putting people first.
+							Each and every connection with our team, guests and shareholders
+							is our opportunity to create an experience that FEEDs – Far
+							Exceeds Expectations Daily – and show how much we care.</p>
+						<p>Everything we do is about you. From chefs who create
+							exciting new flavors, to crew members who know exactly how you
+							want your drink – we prioritize what you need to get you on your
+							way. We strive to keep you at your best, and we remain loyal to
+							you, your tastes and your time.</p>
+						<p>Our mission is to inspire healthier communities by
+							connecting people to real food.</p>
+					</div>
+				</div>
+
+				<!-- end col -->
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="wow fadeIn" data-wow-duration="1s"
+						data-wow-delay="0.1s">
+						<div class="about-images">
+							<img class="about-main" src="/image/images-home/about-main.jpg"
+								alt="About Main Image" /> <img class="about-inset"
+								src="/image/images-home/about-inset.jpg" alt="About Inset Image" />
+						</div>
+					</div>
+				</div>
+				<!-- end col -->
+			</div>
+			<!-- end row -->
+		</div>
+		<!-- end container -->
+	</div>
+
+	<div class="special-menu pad-top-100 parallax">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow fadeIn" data-wow-duration="1s"
+						data-wow-delay="0.1s">
+						<h2 class="block-title color-white text-center">Today's
+							Special</h2>
+						<h5 class="title-caption text-center">Check out the chef's
+							specialities at Cafe 9. We aspire to WOW people everyday with our
+							absolutely mouthwatering special dishes by our very own favourite
+							chefs</h5>
+					</div>
+					<div class="special-box">
+						<div id="owl-demo">
+							<div class="item item-type-zoom">
+								<a th:href="@{/menu}" class="item-hover">
+									<div class="item-info">
+										<div class="headline">
+											NUTELLA PANCAKE
+											<div class="line"></div>
+											<div class="dit-line">Tower of three pancakes layered
+												with chocolate sauce, topped with chocochips and whipped
+												cream.</div>
+										</div>
+									</div>
+								</a>
+								<div class="item-img">
+									<img src="/image/breakfast/brkfst1.jpg" alt="sp-menu"
+										style="width: 342px; height: 440px;" />
+								</div>
+							</div>
+							<div class="item item-type-zoom">
+								<a th:href="@{/menu}" class="item-hover">
+									<div class="item-info">
+										<div class="headline">
+											FARMHOUSE PIZZA
+											<div class="line"></div>
+											<div class="dit-line">Indulge in a pizza topped with
+												fresh veggies that will keep you both happy and healthy.</div>
+										</div>
+									</div>
+								</a>
+								<div class="item-img">
+									<img src="/image/images-home/special-menu-2.jpg" alt="sp-menu" />
+								</div>
+							</div>
+							<div class="item item-type-zoom">
+								<a th:href="@{/menu}" class="item-hover">
+									<div class="item-info">
+										<div class="headline">
+											VEG. ROLL
+											<div class="line"></div>
+											<div class="dit-line">Fresh Veggies Wrapped With Yummy
+												Sauces and Garnishing In Your Favorite Base Wrap.</div>
+										</div>
+									</div>
+								</a>
+								<div class="item-img">
+									<img src="/image/images-home/special-menu-3.jpg" alt="sp-menu" />
+								</div>
+							</div>
+							<div class="item item-type-zoom">
+								<a th:href="@{/menu}" class="item-hover">
+									<div class="item-info">
+										<div class="headline">
+											CHICKEN TIKKA
+											<div class="line"></div>
+											<div class="dit-line">Boneless chicken, chunks of
+												chicken breast marinated in spices and yogurt, baked in
+												tandoori.</div>
+										</div>
+									</div>
+								</a>
+								<div class="item-img">
+									<img src="/image/dinner/dinner2.jpg" alt="sp-menu"
+										style="width: 342px; height: 440px;" />
+								</div>
+							</div>
+							<div class="item item-type-zoom">
+								<a th:href="@{/menu}" class="item-hover">
+									<div class="item-info">
+										<div class="headline">
+											TACOS
+											<div class="line"></div>
+											<div class="dit-line">Hard taco shells filled with
+												mexican melange</div>
+										</div>
+									</div>
+								</a>
+								<div class="item-img">
+									<img src="/image/Menu/Veg/Continental/Tacos.jpg" alt="sp-menu"
+										style="width: 342px; height: 440px;" />
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- end special-box -->
+				</div>
+				<!-- end col -->
+			</div>
+			<!-- end row -->
+		</div>
+		<!-- end container -->
+	</div>
+	<!-- end special-menu -->
+
+	<div id="menu" class="menu-main pad-top-100 pad-bottom-100">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow fadeIn" data-wow-duration="1s"
+						data-wow-delay="0.1s">
+						<h2 class="block-title text-center">Top Sellers</h2>
+						<p class="title-caption text-center">Don't miss out on the
+							favourites of all time! Stressful day? Order your favourite
+							comfort food to fulfill your food cravings at any time of the
+							day.</p>
+					</div>
+					<div class="tab-menu">
+						<div class="slider slider-nav">
+							<div class="tab-title-menu" style="cursor: pointer;">
+								<h2>STARTERS</h2>
+								<p>
+									<i class="flaticon-canape"></i>
+								</p>
+							</div>
+							<div class="tab-title-menu" style="cursor: pointer;">
+								<h2>MAIN DISHES</h2>
+								<p>
+									<i class="flaticon-dinner"></i>
+								</p>
+							</div>
+							<div class="tab-title-menu" style="cursor: pointer;">
+								<h2>DESSERTS</h2>
+								<p>
+									<i class="flaticon-desert"></i>
+								</p>
+							</div>
+							<div class="tab-title-menu" style="cursor: pointer;">
+								<h2>DRINKS</h2>
+								<p>
+									<i class="flaticon-coffee"></i>
+								</p>
+							</div>
+						</div>
+						<div class="slider slider-single">
+							<div>
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+									<a th:href="@{/searchByCategory?category=Starters}"><div class="offer-item">
+										<img src="/image/Menu/Veg/Starters/Garlic_Cheese_Bread.webp"
+											style="height: 110px; width: 110px;" alt=""
+											class="img-responsive" />
+										<div>
+											<h3>
+											<b>GARLIC CHEESE BREAD</b>
+											</h3>
+											<p>Enhanced with a topping of mozzarella cheese and
+												gratinated.</p>
+										</div>
+										<span class="offer-price">₹140</span>
+									</div></a>
+								</div>
+								<!-- end col -->
+
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+									<a th:href="@{/searchByCategory?category=Starters}"><div class="offer-item">
+										<img
+											src="/image/Menu/Non-Veg/Starters/Spicy_Chicken_Wings.webp"
+											style="height: 110px; width: 110px;" alt=""
+											class="img-responsive" />
+										<div>
+											<h3>
+												<b>BBQ CHICKEN WINGS</b>
+											</h3>
+											<p>Tender chicken wings deep fried until crispy and
+												glazed with BBQ sauce ( Smokey )</p>
+										</div>
+										<span class="offer-price">₹210</span>
+									</div></a>
+								</div>
+								<!-- end col -->
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+									<a th:href="@{/searchByCategory?category=Starters}"><div class="offer-item">
+										<img src="/image/Menu/Veg/Starters/Potato_Chilli_Shots.webp"
+											style="height: 110px; width: 110px;" alt=""
+											class="img-responsive" />
+										<div>
+											<h3>
+												<b>POTATO CHILLI SHOTS</b>
+											</h3>
+											<p>Potato chilli shots served with mayo dip to surprise
+												your tingling tastebuds....</p>
+										</div>
+										<span class="offer-price">₹170</span>
+									</div></a>
+								</div>
+								<!-- end col -->
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+									<a th:href="@{/searchByCategory?category=Starters}"><div class="offer-item">
+										<img src="/image/Menu/Non-Veg/Starters/cheesyChickenfry.jpg"
+											style="height: 110px; width: 110px;" alt=""
+											class="img-responsive" />
+										<div>
+											<h3>
+												<b>CHEESY CHICKEN FRY</b>
+											</h3>
+											<p>Jazz up your meal with cheesy chicken fry!</p>
+										</div>
+										<span class="offer-price">₹180</span>
+									</div></a>
+								</div>
+								<!-- end col -->
+							</div>
+							<a th:href="@{/searchByCategory?category=Main Course}"><div>
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+									<div class="offer-item">
+										<img src="/image/Menu/Veg/Main Course/Lachha_Paratha.webp"
+											style="height: 110px; width: 110px;" alt=""
+											class="img-responsive" />
+										<div>
+											<h3>
+												<b>ALOO PARATHA</b>
+											</h3>
+											<p>Stuffed paratha with aloo and spices, served with butter and dahi.</p>
+										</div>
+										<span class="offer-price">₹140</span>
+									</div>
+								</div>
+								<!-- end col -->
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+									<div class="offer-item">
+										<img src="/image/Menu/Non-Veg/Main Course/Chicken_Masala.webp"
+											style="height: 110px; width: 110px;" alt=""
+											class="img-responsive" />
+										<div>
+											<h3>
+												<b>CHICKEN TIKKA MASALA</b>
+											</h3>
+											<p>Pieces of chicken cooked in rich medium spiced masala.</p>
+										</div>
+										<span class="offer-price">₹200</span>
+									</div>
+								</div>
+								<!-- end col -->
+
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+									<div class="offer-item">
+										<img src="/image/Menu/Veg/Main Course/dalMakhani.jpg"
+											style="height: 110px; width: 110px;" alt=""
+											class="img-responsive" />
+										<div>
+											<h3>
+												<b>DAL MAKHANI</b>
+											</h3>
+											<p>Black Gram And Kidney Beans Slow Cooked With Homemade
+												Butter, Hints Of Mint And Ginger And Onion.</p>
+										</div>
+										<span class="offer-price">₹160</span>
+									</div>
+								</div>
+								<!-- end col -->
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+									<div class="offer-item">
+										<img
+											src="/image/Menu/Non-Veg/Main Course/Smoked_Chicken_Curry.webp"
+											style="height: 110px; width: 110px;" alt=""
+											class="img-responsive" />
+										<div>
+											<h3>
+												<b>SMOKED CHICKEN CURRY</b>
+											</h3>
+											<p>Succulent chicken cooked in a smokey Indian spiced
+												gravy, topped with butter and cream for an enriching taste.</p>
+										</div>
+										<span class="offer-price">₹190</span>
+									</div>
+								</div>
+								<!-- end col -->
+							</div></a>
+							
+							<a th:href="@{/searchByCategory?category=Desserts}"><div>
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+									<div class="offer-item">
+										<img src="/image/Menu/Veg/Desserts/Hazelnut_Cheesecake.jfif"
+											style="height: 110px; width: 110px;" alt=""
+											class="img-responsive" />
+										<div>
+											<h3>
+												<b>HAZELNUT CHEESECAKE</b>
+											</h3>
+											<p>Our version of classic baked hazelnut cheesecake</p>
+										</div>
+										<span class="offer-price">₹220</span>
+									</div>
+								</div>
+								<!-- end col -->
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+									<div class="offer-item">
+										<img src="/image/Menu/Non-Veg/Desserts/Blueberry_Cake.jpg"
+											style="height: 110px; width: 110px;" alt=""
+											class="img-responsive" />
+										<div>
+											<h3>
+												<b>BLUEBERRY CHEESECAKE</b>
+											</h3>
+											<p>Velvety Smooth Cheesecake with a burst of tarty
+												Blueberries. Drive away your blues with every bite!</p>
+										</div>
+										<span class="offer-price">₹200</span>
+									</div>
+								</div>
+								<!-- end col -->
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+									<div class="offer-item">
+										<img src="/image/Menu/Veg/Desserts/Rose_Phirni.webp"
+											style="height: 110px; width: 110px;" alt=""
+											class="img-responsive" />
+										<div>
+											<h3>
+												<b>ROSE PHIRNI</b>
+											</h3>
+											<p>Slow-cooked to perfection, this traditional sweet
+												pudding made with milk, cream and nuts and laced with rose
+												petals is the perfect coolant for Indian summers (Served
+												cold)...</p>
+										</div>
+										<span class="offer-price">₹150</span>
+									</div>
+								</div>
+								<!-- end col -->
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+									<div class="offer-item">
+										<img src="/image/Menu/Non-Veg/Desserts/Red_Velvet_Cake.jpg"
+											style="height: 110px; width: 110px;" alt=""
+											class="img-responsive" />
+										<div>
+											<h3>
+												<b>RED VELVET CAKE</b>
+											</h3>
+											<p>A slice of Rich Red Velvet Pastry with light and
+												fluffy vanilla butter cream frosting is a great way to make
+												you and that friend of yours very happy.</p>
+										</div>
+										<span class="offer-price">₹220</span>
+									</div>
+								</div>
+								<!-- end col -->
+							</div></a>
+							
+							<a th:href="@{/searchByCategory?category=Beverages}"><div>
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+									<div class="offer-item">
+										<img src="/image/Menu/Veg/Beverages/Mocha_Freddo.webp"
+											style="height: 110px; width: 110px;" alt=""
+											class="img-responsive" />
+										<div>
+											<h3>
+												<b>MOCHA FREDDO</b>
+											</h3>
+											<p>Coffee with rich mocha sauce blended with milk and
+												ice. Topped with sweetened whipped cream.</p>
+										</div>
+										<span class="offer-price">₹200</span>
+									</div>
+								</div>
+								<!-- end col -->
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+									<div class="offer-item">
+										<img src="/image/Menu/Veg/Beverages/Cappuccino.webp"
+											style="height: 110px; width: 110px;" alt=""
+											class="img-responsive" />
+										<div>
+											<h3>
+												<b>CAPPUCCINO</b>
+											</h3>
+											<p>Dark, rich espresso and bittersweet cocoa lies in wait
+												under a smoothed and stretched layer of thick foam.</p>
+										</div>
+										<span class="offer-price">₹99</span>
+									</div>
+								</div>
+								<!-- end col -->
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+									<div class="offer-item">
+										<img
+											src="/image/Menu/Veg/Beverages/Mabby_Strawberry_Shake.webp"
+											style="height: 110px; width: 110px;" alt=""
+											class="img-responsive" />
+										<div>
+											<h3>
+												<b>MABBY STRAWBERRY SHAKE</b>
+											</h3>
+											<p>Heavenly delightful, palatable, and healthy shake
+												filled with the sweetness of strawberries.</p>
+										</div>
+										<span class="offer-price">₹160</span>
+									</div>
+								</div>
+								<!-- end col -->
+
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+									<div class="offer-item">
+										<img src="/image/Menu/Veg/Beverages/Cafe_Mocha.webp"
+											style="height: 110px; width: 110px;" alt=""
+											class="img-responsive" />
+										<div>
+											<h3>
+												<b>Cafe Mocha</b>
+											</h3>
+											<p>We combine our rich, full-bodied espresso with
+												bittersweet mocha sauce and steamed milk, then top it off
+												with sweetened whipped cream.</p>
+										</div>
+										<span class="offer-price">₹180</span>
+									</div>
+								</div>
+								<!-- end col -->
+
+							</div></a>
+						</div>
+					</div>
+					<!-- end tab-menu -->
+				</div>
+				<!-- end col -->
+			</div>
+			<!-- end row -->
+		</div>
+		<!-- end container -->
+	</div>
+	<!-- end menu -->
+
+	<div id="our_team"
+		class="team-main pad-top-100 pad-bottom-100 parallax">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow fadeIn" data-wow-duration="1s"
+						data-wow-delay="0.1s">
+						<h2 class="block-title text-center">Our Team</h2>
+						<p class="title-caption text-center">Our team has curated the
+							best of the menu to serve you all day. We are pretty sure you
+							would love to get to know our team members better. They want to
+							create an environment where absolute guest satisfaction is our
+							highest priority. We regard it as a personal challenge to keep up
+							with food fancies!</p>
+					</div>
+					<div class="team-box">
+
+						<div class="row">
+							<div class="col-md-4 col-sm-6">
+								<div class="sf-team">
+									<!-- <div class="thumb">
+                                        <a href="#"><img src="/image/images-home/staff-01.jpg" alt=""/></a>
+                                    </div> -->
+									<div class="text-col">
+										<h3>Suraj Thakare</h3>
+
+										<ul class="team-social">
+											<li><a href="#"><i class="fa fa-facebook"
+													aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-twitter"
+													aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-linkedin"
+													aria-hidden="true"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- end col -->
+							<div class="col-md-4 col-sm-6">
+								<div class="sf-team">
+									<!-- <div class="thumb">
+                                        <a href="#"><img src="/image/images-home/staff-02.jpg" alt=""/></a>
+                                    </div> -->
+									<div class="text-col">
+										<h3>Moinuddin Bhavnagri</h3>
+
+										<ul class="team-social">
+											<li><a href="#"><i class="fa fa-facebook"
+													aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-twitter"
+													aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-linkedin"
+													aria-hidden="true"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- end col -->
+							<div class="col-md-4 col-sm-6">
+								<div class="sf-team">
+									<!-- <div class="thumb">
+                                        <a href="#"><img src="/image/images-home/staff-03.jpg" alt=""/></a>
+                                    </div> -->
+									<div class="text-col">
+										<h3>Yash Oswal</h3>
+
+										<ul class="team-social">
+											<li><a href="#"><i class="fa fa-facebook"
+													aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-twitter"
+													aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-linkedin"
+													aria-hidden="true"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- end col -->
+						</div>
+						<br />
+						<!-- end row -->
+
+						<div class="row">
+							<div class="col-md-4 col-sm-6">
+								<div class="sf-team">
+									<!-- <div class="thumb">
+                                        <a href="#"><img src="/image/images-home/staff-01.jpg" alt=""/></a>
+                                    </div> -->
+									<div class="text-col">
+										<h3>Rumjhum Singru</h3>
+
+										<ul class="team-social">
+											<li><a href="#"><i class="fa fa-facebook"
+													aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-twitter"
+													aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-linkedin"
+													aria-hidden="true"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- end col -->
+							<div class="col-md-4 col-sm-6">
+								<div class="sf-team">
+									<!-- <div class="thumb">
+                                        <a href="#"><img src="/image/images-home/staff-02.jpg" alt=""/></a>
+                                    </div> -->
+									<div class="text-col">
+										<h3>Shraddha Birajdar</h3>
+
+										<ul class="team-social">
+											<li><a href="#"><i class="fa fa-facebook"
+													aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-twitter"
+													aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-linkedin"
+													aria-hidden="true"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- end col -->
+							<div class="col-md-4 col-sm-6">
+								<div class="sf-team">
+									<!-- <div class="thumb">
+                                        <a href="#"><img src="/image/images-home/staff-03.jpg" alt=""/></a>
+                                    </div> -->
+									<div class="text-col">
+										<h3>Sonali Katakdhondh</h3>
+
+										<ul class="team-social">
+											<li><a href="#"><i class="fa fa-facebook"
+													aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-twitter"
+													aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-linkedin"
+													aria-hidden="true"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- end col -->
+						</div>
+						<br />
+						<!-- end row -->
+
+						<div class="row">
+							<div class="col-md-4 col-sm-6">
+								<div class="sf-team">
+									<!-- <div class="thumb">
+                                        <a href="#"><img src="/image/images-home/staff-01.jpg" alt=""/></a>
+                                    </div> -->
+									<div class="text-col">
+										<h3>Mayur Mundada</h3>
+
+										<ul class="team-social">
+											<li><a href="#"><i class="fa fa-facebook"
+													aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-twitter"
+													aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-linkedin"
+													aria-hidden="true"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- end col -->
+							<div class="col-md-4 col-sm-6">
+								<div class="sf-team">
+									<!-- <div class="thumb">
+                                        <a href="#"><img src="/image/images-home/staff-02.jpg" alt=""/></a>
+                                    </div> -->
+									<div class="text-col">
+										<h3>Prajakta Hosale</h3>
+
+										<ul class="team-social">
+											<li><a href="#"><i class="fa fa-facebook"
+													aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-twitter"
+													aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-linkedin"
+													aria-hidden="true"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- end col -->
+							<div class="col-md-4 col-sm-6">
+								<div class="sf-team">
+									<!-- <div class="thumb">
+                                        <a href="#"><img src="/image/images-home/staff-03.jpg" alt=""/></a>
+                                    </div> -->
+									<div class="text-col">
+										<h3>Abid Ahmad</h3>
+
+										<ul class="team-social">
+											<li><a href="#"><i class="fa fa-facebook"
+													aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-twitter"
+													aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-linkedin"
+													aria-hidden="true"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- end col -->
+						</div>
+					</div>
+					<!-- end team-box -->
+
+				</div>
+				<!-- end col -->
+			</div>
+			<!-- end row -->
+		</div>
+		<!-- end container -->
+	</div>
+	<!-- end team-main -->
+
+	<div id="gallery" class="gallery-main pad-top-100 pad-bottom-100">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow fadeIn" data-wow-duration="1s"
+						data-wow-delay="0.1s">
+						<h2 class="block-title text-center">Our Gallery</h2>
+						<p class="title-caption text-center">Have a look at your
+							yummylicious food pictures which look so instagram worthy!</p>
+					</div>
+					<div class="gal-container clearfix">
+						<div class="col-md-8 col-sm-12 co-xs-12 gal-item">
+							<div class="box">
+								<a href="#" data-toggle="modal" data-target="#1"> <img
+									src="/image/images-home/gallery_01.jpg" alt="" />
+								</a>
+								<div class="modal fade" id="1" tabindex="-1" role="dialog">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">×</span>
+											</button>
+											<div class="modal-body">
+												<img src="/image/images-home/gallery_01.jpg" alt="" />
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+							<div class="box">
+								<a href="#" data-toggle="modal" data-target="#2"> <img
+									src="/image/images-home/gallery_02.jpg" alt="" />
+								</a>
+								<div class="modal fade" id="2" tabindex="-1" role="dialog">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">×</span>
+											</button>
+											<div class="modal-body">
+												<img src="/image/images-home/gallery_02.jpg" alt="" />
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+							<div class="box">
+								<a href="#" data-toggle="modal" data-target="#3"> <img
+									src="/image/images-home/gallery_03.jpg" alt="" />
+								</a>
+								<div class="modal fade" id="3" tabindex="-1" role="dialog">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">×</span>
+											</button>
+											<div class="modal-body">
+												<img src="/image/images-home/gallery_03.jpg" alt="" />
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+							<div class="box">
+								<a href="#" data-toggle="modal" data-target="#4"> <img
+									src="/image/images-home/gallery_04.jpg" alt="" />
+								</a>
+								<div class="modal fade" id="4" tabindex="-1" role="dialog">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">×</span>
+											</button>
+											<div class="modal-body">
+												<img src="/image/images-home/gallery_04.jpg" alt="" />
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+							<div class="box">
+								<a href="#" data-toggle="modal" data-target="#5"> <img
+									src="/image/images-home/gallery_05.jpg" alt="" />
+								</a>
+								<div class="modal fade" id="5" tabindex="-1" role="dialog">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">×</span>
+											</button>
+											<div class="modal-body">
+												<img src="/image/images-home/gallery_05.jpg" alt="" />
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+							<div class="box">
+								<a href="#" data-toggle="modal" data-target="#9"> <img
+									src="/image/images-home/gallery_06.jpg" alt="" />
+								</a>
+								<div class="modal fade" id="9" tabindex="-1" role="dialog">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">×</span>
+											</button>
+											<div class="modal-body">
+												<img src="/image/images-home/gallery_06.jpg" alt="" />
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-8 col-sm-12 co-xs-12 gal-item">
+							<div class="box">
+								<a href="#" data-toggle="modal" data-target="#10"> <img
+									src="/image/images-home/gallery_07.jpg" alt="" />
+								</a>
+								<div class="modal fade" id="10" tabindex="-1" role="dialog">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">×</span>
+											</button>
+											<div class="modal-body">
+												<img src="/image/images-home/gallery_07.jpg" alt="" />
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+							<div class="box">
+								<a href="#" data-toggle="modal" data-target="#11"> <img
+									src="/image/images-home/gallery_08.jpg" alt="" />
+								</a>
+								<div class="modal fade" id="11" tabindex="-1" role="dialog">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">×</span>
+											</button>
+											<div class="modal-body">
+												<img src="/image/images-home/gallery_08.jpg" alt="" />
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+							<div class="box">
+								<a href="#" data-toggle="modal" data-target="#12"> <img
+									src="/image/images-home/gallery_09.jpg" alt="" />
+								</a>
+								<div class="modal fade" id="12" tabindex="-1" role="dialog">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">×</span>
+											</button>
+											<div class="modal-body">
+												<img src="/image/images-home/gallery_09.jpg" alt="" />
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+							<div class="box">
+								<a href="#" data-toggle="modal" data-target="#13"> <img
+									src="/image/images-home/gallery_10.jpg" alt="" />
+								</a>
+								<div class="modal fade" id="13" tabindex="-1" role="dialog">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">×</span>
+											</button>
+											<div class="modal-body">
+												<img src="/image/images-home/gallery_10.jpg" alt="" />
+											</div>
+											<!-- <div class="col-md-12 description">
+												<h4>This is the 10 one on my Gallery</h4>
+											</div> -->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- end gal-container -->
+				</div>
+				<!-- end col -->
+			</div>
+			<!-- end row -->
+		</div>
+		<!-- end container -->
+	</div>
+	<!-- end gallery-main -->
+
+	<div class="footer-main">
+		<div class="footer-news pad-top-100 pad-bottom-70 parallax"
+			id="locate">
+			<section class="map">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div id="map">
+								<h2 class="block-title text-center" style="color: white;">Locate
+									Us</h2>
+								<!-- How to change your own map point
+            1. Go to Google Maps
+            2. Click on your location point
+            3. Click "Share" and choose "Embed map" tab
+            4. Copy only URL and paste it within the src="" field below
+        -->
+								<iframe
+									src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.5210244664636!2d73.94594471494807!3d18.55053468739157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c3c5497b4b0d%3A0xea6c4968b6b501ec!2sTIAA%20Global%20Business%20Services%20India%20Pvt.%20Ltd%2CTower%204%2CWorld%20Trade%20Center!5e0!3m2!1sen!2sin!4v1597221530451!5m2!1sen!2sin"
+									width="100%" height="500" frameborder="0" style="border: 0"
+									allowfullscreen=""></iframe>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</div>
+
+
+		<!-- end footer-news -->
+		<div class="footer-box pad-top-70" id="footer">
+			<div class="container" style="margin-left: 250px;">
+				<div class="row">
+					<div class="footer-in-main">
+						<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+							<div class="footer-box-a">
+								<h3>About Us</h3>
+								<p>We do the right thing and lead by putting people first.
+									Each and every connection with our team, guests and
+									shareholders is our opportunity to create an experience that
+									FEEDs – Far Exceeds Expectations Daily – and show how much we
+									care.</p>
+								<ul class="socials-box footer-socials pull-left">
+									<li><a href="#">
+											<div class="social-circle-border">
+												<i class="fa  fa-facebook"></i>
+											</div>
+									</a></li>
+									<li><a href="#">
+											<div class="social-circle-border">
+												<i class="fa fa-twitter"></i>
+											</div>
+									</a></li>
+									<li><a href="#">
+											<div class="social-circle-border">
+												<i class="fa fa-google-plus"></i>
+											</div>
+									</a></li>
+									<li><a href="#">
+											<div class="social-circle-border">
+												<i class="fa fa-pinterest"></i>
+											</div>
+									</a></li>
+									<li><a href="#">
+											<div class="social-circle-border">
+												<i class="fa fa-linkedin"></i>
+											</div>
+									</a></li>
+								</ul>
+
+							</div>
+							<!-- end footer-box-a -->
+						</div>
+						
+						<!-- end col -->
+						<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
+							style="margin-left: 50px;">
+							<div class="footer-box-c">
+								<h3>Contact Us</h3>
+								<p>
+									<i class="fa fa-map-signs" aria-hidden="true"></i> <span>8th
+										Floor IT EON PARK, Kharadi, Pune</span>
+								</p>
+								<p>
+									<i class="fa fa-mobile" aria-hidden="true"></i> <span>
+										+91 12345 12345 </span>
+								</p>
+								<p>
+									<i class="fa fa-envelope" aria-hidden="true"></i> <span><a
+										href="mailto:eat.cafe.9@gmail.com">eat.cafe.9@gmail.com</a></span>
+								</p>
+							</div>
+							<!-- end footer-box-c -->
+						</div>
+						<!-- end col -->
+						<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
+							style="margin-left: -50px;">
+							<div class="footer-box-d">
+								<h3>Opening Hours</h3>
+
+								<ul>
+									<li>
+										<p>Monday - Thursday</p> <span> 10:00 AM - 11:00 PM</span>
+									</li>
+									<li>
+										<p>Friday - Sunday</p> <span> 10:00 AM - 12:00 AM</span>
+									</li>
+								</ul>
+							</div>
+							<!-- end footer-box-d -->
+						</div>
+						<!-- end col -->
+					</div>
+					<!-- end footer-in-main -->
+				</div>
+				<!-- end row -->
+			</div>
+			<!-- end container -->
+			<div id="copyright" class="copyright-main">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<h6 class="copy-title">
+								Copyright &copy; 2020 Cafe 9 <a href="#" target="_blank"></a>
+							</h6>
+						</div>
+					</div>
+					<!-- end row -->
+				</div>
+				<!-- end container -->
+			</div>
+			<!-- end copyright-main -->
+		</div>
+		<!-- end footer-box -->
+	</div>
+	<!-- end footer-main -->
+
+	<a href="#" class="scrollup" style="display: none;">Scroll</a>
+
+	<section id="color-panel" class="close-color-panel">
+		<a class="panel-button gray2"><i class="fa fa-cog fa-spin fa-2x"></i></a>
+		<!-- Colors -->
+		<div class="segment">
+			<h4 class="gray2 normal no-padding">Color Scheme</h4>
+			<a title="strong-blue" class="switcher strong-blue-bg"></a> <a
+				title="orange" class="switcher orange-bg"></a> <a
+				title="moderate-green" class="switcher moderate-green-bg"></a> <a
+				title="vivid-yellow" class="switcher vivid-yellow-bg"></a>
+		</div>
+	</section>
+
+	<!-- ALL JS FILES -->
+	<script th:src="@{/js/js-home/all.js}"></script>
+	<script th:src="@{/js/js-home/bootstrap.min.js}"></script>
+	<!-- ALL PLUGINS -->
+	<script th:src="@{/js/js-home/custom.js}"></script>
+	<!-- Modernizer -->
+	<script th:src="@{/js/js-home/modernizer.js}"></script>
+</body>
+
+</html>

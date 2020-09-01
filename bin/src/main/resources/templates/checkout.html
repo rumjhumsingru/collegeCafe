@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header" />
+<title>Cafe 9 - Checkout</title>
+<link rel="stylesheet" href="/css/universal.css" />
+<body>
+
+	<div class="abc"
+		style="width: 100%; height: 200px; background-color: #82bfeb; z-index: -1; margin-top: -70px;">
+		
+		<div class="container">
+			<div class="row" style="margin-top: 70px;">
+
+				<div class="col-md-6">
+
+					<h2 style="margin-left: 100px;">
+						<i class="fa fa-credit-card"></i> Checkout
+					</h2>
+
+				</div>
+				<div class="col-md-6 text-right">
+					<h5 class="breadcrumb">
+						<a th:href="@{/}" style="cursor: pointer;">Home</a> / <a
+							th:href="@{/menu}">menu</a> / <a
+							th:href="@{/checkout(id=${shoppingCart.id})}">Checkout</a>
+					</h5>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+
+		<div class="row" style="margin-top: 10px;">
+			<form name="myForm" onsubmit="return validateForm()" th:action="@{/checkout}" method="post">
+
+				<!-- Checkout Info -->
+				<div class="col-xs-7">
+					<div th:if="${missingRequiredField}">
+						<h5 class="alert alert-warning">There are some fields
+							missing. Field with * is required.</h5>
+					</div>
+
+					<div class="panel-group" id="accordion">
+
+						<!-- 1. Shipping Address -->
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordion"
+										href="#shippingInfo"> 1. Shipping Address </a>
+								</h4>
+							</div>
+							<div id="shippingInfo" class="panel-collapse collapse"
+								th:classappend="${classActiveShipping}? 'in'">
+								<div class="panel-body">
+									<table class="table" th:if="${not emptyShippingList}">
+										<thead>
+											<tr>
+												<th>Available Shipping Address</th>
+												<th>Operations</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="userShipping : ${userShippingList}">
+												<td
+													th:text="${userShipping.userShippingStreet1}+' '+${userShipping.userShippingStreet2}+', '+${userShipping.userShippingCity}
+												+', '+${userShipping.userShippingState}"></td>
+												<td><a
+													th:href="@{/setShippingAddress(userShippingId=${userShipping.id})}">use
+														this address</a></td>
+											</tr>
+										</tbody>
+									</table>
+
+									<div class="form-group">
+										<label for="shippingName">Name</label> <input type="text"
+											pattern="[a-zA-Z]+[a-zA-Z ]+" class="form-control"
+											id="shippingName" 
+											placeholder="Receiver Name" name="shippingAddressName"
+											th:value="${shippingAddress.shippingAddressName}" />
+									</div>
+
+									<div class="form-group">
+										<label for="shippingStreet">Street Address</label> <input
+											type="text" class="form-control" id="shippingStreet"
+											placeholder="Street Address 1"
+											name="shippingAddressStreet1"
+											th:value="${shippingAddress.shippingAddressStreet1}" /> <input
+											type="text" class="form-control"
+											placeholder="Street Address 2" name="shippingAddressStreet2"
+											th:value="${shippingAddress.shippingAddressStreet2}" />
+									</div>
+
+									<div class="row" style="margin-top: -50px;">
+										<div class="col-xs-4">
+											<div class="form-group">
+												<label for="shippingCity">City</label> <input type="text"
+													class="form-control" id="shippingCity"
+													placeholder="Shipping City" th:name="shippingAddressCity"
+													
+													th:value="${shippingAddress.shippingAddressCity}" />
+											</div>
+										</div>
+										<div class="col-xs-4">
+											<div class="form-group">
+												<label for="shippingZipcode">Zipcode</label> <input
+													type="text" class="form-control" id="shippingZipcode"
+													placeholder="Enter 6 digit Zipcode" pattern="[0-9]{6}"
+													th:name="shippingAddressZipcode"
+													th:value="${shippingAddress.shippingAddressZipcode}" />
+											</div>
+										</div>
+
+									</div>
+									<a data-toggle="collapse" data-parent="#accordion"
+										style="margin-top: -70px;" class="btn btn-dark pull-right"
+										href="#paymentInfo">Next</a>
+								</div>
+							</div>
+						</div>
+
+						<!-- Payment Information -->
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordion"
+										href="#paymentInfo"> 2. Payment Information </a>
+								</h4>
+							</div>
+
+							<div id="paymentInfo" class="panel-collapse collapse"
+								th:classappend="${classActivePayment}? 'in'">
+								<div class="panel-body">
+									<table class="table" th:if="${not emptyPaymentList}">
+										<thead>
+											<tr>
+												<th>Available Credit Card</th>
+												<th>Operations</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="userPayment : ${userPaymentList}">
+												<td th:text="${userPayment.cardName}"></td>
+												<td><a
+													th:href="@{/setPaymentMethod(userPaymentId=${userPayment.id})}">use
+														this payment</a></td>
+											</tr>
+										</tbody>
+									</table>
+
+									<!-- Credit Card Information -->
+									<div class="row">
+										<div class="col-xs-12">
+											<img th:src="@{/image/creditcard.png}" class="img-responsive" /><br />
+											<div class="form-group" style="margin-top: -20px;">
+												<label for="cardType">Select Card Type: </label> <select
+													class="form-control" id="cardType" name="type"
+													th:value="${payment.type}">
+													<option value="visa">Visa</option>
+													<option value="mastercard">Mastercard</option>
+													<option value="discover">Discover</option>
+													<option value="amex">American Express</option>
+												</select>
+											</div>
+
+											<div class="form-group">
+												<label for="cardHolder">Card Holder Name:</label> <input
+													type="text" class="form-control" id="cardHolder"
+													pattern="[a-zA-Z]+[a-zA-Z ]+"
+													placeHolder="Card Holder Name" th:name="holderName"
+													th:value="${payment.holderName}" />
+											</div>
+											<div class="form-group">
+												<label for="cardNumber">Card Number:</label>
+												<div class="input-group">
+													<input type="tel" class="form-control" id="cardNumber"
+														pattern="[0-9]{13,16}"
+														placeHolder="Enter a valid 13-16 Card Number" th:name="cardNumber"
+														th:value="${payment.cardNumber}" /> <span
+														class="input-group-addon"><i
+														class="fa fa-credit-card" aria-hidden="true"></i></span>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-xs-5" style="margin-top: -50px;">
+											<div class="form-group">
+												<label style="padding-top: 10px;">Expiration Date</label>
+												<div class="row" style="margin-top: -38px;">
+													<div class="col-xs-6">
+														<select class="form-control" name="expiryMonth"
+															required="required" th:value="${payment.expiryMonth}">
+															<option th:text="${payment.expiryMonth}">--
+																Month --</option>
+															<option value="01">Jan (01)</option>
+															<option value="02">Feb (02)</option>
+															<option value="03">Mar (03)</option>
+															<option value="04">Apr (04)</option>
+															<option value="05">May (05)</option>
+															<option value="06">June (06)</option>
+															<option value="07">July (07)</option>
+															<option value="08">Aug (08)</option>
+															<option value="09">Sep (09)</option>
+															<option value="10">Oct (10)</option>
+															<option value="11">Nov (11)</option>
+															<option value="12">Dec (12)</option>
+														</select>
+													</div>
+													<div class="col-xs-6">
+														<select class="form-control" name="expiryYear"
+															th:value="${payment.expiryYear}">
+															<option th:text="${payment.expiryYear}">-- Year
+																--</option>
+															<option value="20">2020</option>
+															<option value="21">2021</option>
+															<option value="22">2022</option>
+															<option value="23">2023</option>
+															<option value="23">2024</option>
+															<option value="23">2025</option>
+															<option value="23">2026</option>
+															<option value="23">2027</option>
+															<option value="23">2028</option>
+															<option value="23">2029</option>
+															<option value="23">2030</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-xs-5" style="margin-top: -50px;">
+											<div class="form-group">
+												<label for="cardCVC" style="padding-top: 10px;">CVV</label>
+												<input id="cardCVC" type="tel" class="form-control"
+													pattern="[0-9]{3}" placeholder="CVV" th:name="cvc" th:value="${payment.cvc}" />
+											</div>
+										</div>
+									</div>
+
+									<a data-toggle="collapse" data-parent="#accordion"
+										style="margin-top: -50px;" class="btn btn-dark pull-right"
+										href="#reviewItems">Next</a>
+								</div>
+							</div>
+						</div>
+
+						<!-- 3. Review Items and Shipping -->
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordion"
+										href="#reviewItems"> 3. Review Items and Shipping </a>
+								</h4>
+							</div>
+							<div id="reviewItems" class="panel-collapse collapse">
+								<div class="panel-body">
+
+
+									<div class="row">
+										<div class="col-xs-8">
+											<label>Products</label>
+										</div>
+										<div class="col-xs-2">
+											<label>Price</label>
+										</div>
+										<div class="col-xs-2">
+											<label>Qty</label>
+										</div>
+									</div>
+
+									<!-- display products in cart -->
+									<div class="row" th:each="cartItem : ${cartItemList}"
+										style="margin-top: -30px;">
+
+										<div class="col-xs-2">
+											<img class="img-responsive shelf-book"
+												th:src="@{http://54.175.217.57/itemImages/}+${cartItem.item.id}+'.png'"
+												style="width: 70px; height: 70px;" />
+
+										</div>
+										<div class="col-xs-6">
+											<div style="margin-left: 0px;">
+												<label style="font-size: 18px;"
+													th:text="${cartItem.item.name}"></label>
+
+												<p>
+													<a th:href="@{/shoppingCart/removeItem?id=}+${cartItem.id}">delete</a>
+												</p>
+											</div>
+										</div>
+
+										<div class="col-xs-2">
+											<label style="color: #db3208; font-size: large;"> ₹<span
+												th:text="${cartItem.item.ourPrice}"></span>
+											</label>
+										</div>
+
+										<div class="col-xs-2">
+											<label style="font-size: large;" th:text="${cartItem.qty}"></label>
+										</div>
+
+									</div>
+
+									<h4 class="col-xs-12 text-right">
+										<strong style="font-size: large;">Order Total (<span
+											th:text="${#lists.size(cartItemList)}"></span> items):
+										</strong> <span style="color: #db3208; font-size: large;">₹<span
+											th:text="${shoppingCart.grandTotal}"></span></span>
+									</h4>
+									<br /> <br />
+
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<!-- Left Panel -->
+				<div class="col-xs-4" style="margin-left: 100px;">
+					<div class="panel panel-default">
+						<div class="panel-body">
+
+							<h3>Order Summary</h3>
+							<div class="row" style="margin-top: -50px;">
+								<div class="col-xs-7 text-left">Total before tax:</div>
+								<div class="col-xs-5 text-right">
+									₹<span th:text="${shoppingCart.grandTotal}"></span>
+								</div>
+							</div>
+							<div class="row" style="margin-top: -50px;">
+								<div class="col-xs-7 text-left">Estimated tax:</div>
+								<div class="col-xs-5 text-right">
+									₹<span th:with="tax=${shoppingCart.grandTotal*0.06}"
+										th:text="${#numbers.formatDecimal(tax, 0 ,2)}"></span>
+								</div>
+							</div>
+							<div class="row" style="margin-top: -30px;">
+								<div class="col-xs-7 text-left">
+									<label style="color: darkred; font-size: 25px;"> <strong>Order
+											Total: </strong>
+									</label>
+								</div>
+								<div class="col-xs-5 text-right">
+									<label style="font-size: 25px;"> <strong
+										style="color: darkred;">₹<span
+											th:with="total=${shoppingCart.grandTotal+shoppingCart.grandTotal*0.06}"
+											th:text="${#numbers.formatDecimal(total, 0 ,2)}"></span></strong>
+									</label>
+								</div>
+							</div>
+							<div style="margin-top: -50px;">
+								<button type="submit" class="btn btn-warning btn-block">Place
+									your order</button>
+								<p style="font-size: smaller;">
+									By placing your order, you agree to Cafe's <a href="#">privacy</a>
+									notice and <a href="#">conditions</a> of use.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- end of container -->
+
+
+	<div th:replace="common/header :: body-bottom-scripts" />
+	<script th:src="@{/js/scripts.js}"></script>
+	<script>
+		function validateForm() {
+			var x = document.forms["myForm"]["shippingAddressName"].value;
+			if (x == "") {
+				alert("Enter a valid name");
+				return false;
+			}
+			var x = document.forms["myForm"]["shippingAddressStreet1"].value;
+			if (x == "") {
+				alert("Street 1 cannot be empty");
+				return false;
+			}
+			var x = document.forms["myForm"]["shippingAddressZipcode"].value;
+			if (x == "") {
+				alert("Enter a valid zipcode of 6-digits");
+				return false;
+			}
+			var x = document.forms["myForm"]["shippingAddressCity"].value;
+			if (x == "") {
+				alert("City must be filled out");
+				return false;
+			}
+			var x = document.forms["myForm"]["holderName"].value;
+			if (x == "") {
+				alert("Card holder name cannot be empty");
+				return false;
+			}
+			var x = document.forms["myForm"]["cardNumber"].value;
+			if (x == "") {
+				alert("Card Number cannot be empty");
+				return false;
+			}
+			var x = document.forms["myForm"]["cvc"].value;
+			if (x == "") {
+				alert("CVV cannot be empty");
+				return false;
+			}
+		}
+	</script>
+</body>
+</html>

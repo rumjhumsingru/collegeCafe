@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Cambria;
+}
+
+#main{
+    width: 100%;
+    height: 100vh;
+     background-image: url(cafe23.jpg);
+     background-size: cover;   
+}
+
+nav{
+    width: 100%;
+    height: 80px;
+    /* background-color: #000; */
+    background-color: #0009;  /* for transparent nav bar */
+    line-height: 80px;
+   
+}
+nav ul{
+    float: right;
+    margin-right: 50px;
+    /* height: 100px; */
+}
+nav ul li{
+    list-style-type: none;
+    display: inline-block;
+    transition: 0.8s all;
+    /* height: 150px; */
+} 
+nav ul li:hover{
+    background-color: red;
+}
+nav ul li a{
+    text-decoration : none;
+    color: #fff;
+    padding: 30px;
+   
+}
+
+.gallery{
+    width: 100%;
+    height: 500px;
+    max-width: 1000px;
+    user-select: none;
+    box-shadow: 0px 0px 3px 1px #00000078;
+    padding: 10px;
+    box-sizing: border-box;
+    margin : 0 auto;
+
+}

@@ -27,9 +27,10 @@ public class MailConstructor {
 	@Autowired
 	private TemplateEngine templateEngine;
 	
-	public SimpleMailMessage constructResetTokenEmail(
+	public SimpleMailMessage constructnewResetTokenEmail(
 			String contextPath, Locale locale, String token, User user, String password
 			) {
+	
 		
 		String url = contextPath + "/newUser?token="+token;
 		String message = "\nPlease click on this link to verify your email and edit your personal information. Your password is: \n"+password;
@@ -41,6 +42,40 @@ public class MailConstructor {
 		return email;
 		
 	}
+	
+	//Test Password Template
+	public MimeMessagePreparator constructResetTokenEmail(
+			String contextPath, Locale locale, String token, User user, String password
+			) {
+	
+		Context context= new Context();
+		String url = contextPath + "/newUser?token="+token;
+		
+		//Passing Variables for email
+		context.setVariable("username", user.getUsername());
+		context.setVariable("password",password);
+		context.setVariable("url",url);
+
+		
+		
+		String emailTemplate = templateEngine.process("signupTemplateEmail", context);
+		
+		MimeMessagePreparator messagePreparator = new MimeMessagePreparator() {
+			@Override
+			public void prepare(MimeMessage mimeMessage) throws Exception {
+				MimeMessageHelper email = new MimeMessageHelper(mimeMessage);
+				email.setTo(user.getEmail());
+				email.setSubject("Welcome to Cafe 9!");
+				email.setText(emailTemplate, true);
+				email.setFrom(new InternetAddress("eat.cafe.9@gmail.com"));
+			}
+		};
+		
+		return messagePreparator;
+		
+	}
+	//////////////////////////////////////
+	
 	
 	public MimeMessagePreparator constructOrderConfirmationEmail (User user, Order order, Locale locale) {
 		Context context = new Context();

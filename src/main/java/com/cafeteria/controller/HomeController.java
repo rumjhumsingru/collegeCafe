@@ -190,10 +190,13 @@ public class HomeController {
 
 		String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
 
-		SimpleMailMessage newEmail = mailConstructor.constructResetTokenEmail(appUrl, request.getLocale(), token, user,
-				password);
+//		SimpleMailMessage newEmail = mailConstructor.constructResetTokenEmail(appUrl, request.getLocale(), token, user,
+//				password);
+//		mailSender.send(newEmail);
 
-		mailSender.send(newEmail);
+		//new added202010
+		mailSender.send(mailConstructor.constructResetTokenEmail(appUrl, request.getLocale(), token, user, password));
+
 
 		model.addAttribute("forgetPasswordEmailSent", "true");
 		model.addAttribute("classActiveForget", true);
@@ -552,10 +555,16 @@ public class HomeController {
 
 		String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
 
-		SimpleMailMessage email = mailConstructor.constructResetTokenEmail(appUrl, request.getLocale(), token, user,
-				password);
+//		SimpleMailMessage email = mailConstructor.constructResetTokenEmail(appUrl, request.getLocale(), token, user,
+//				password);
+//
+//		mailSender.send(email);
+		
+		
+		
+		//new added 202010
+		mailSender.send(mailConstructor.constructResetTokenEmail(appUrl, request.getLocale(), token, user, password));
 
-		mailSender.send(email);
 
 		model.addAttribute("emailSent", "true");
 		model.addAttribute("orderList", user.getOrderList());

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:fragment="common-header">
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<!-- Bootstrap core CSS -->
+<link href="/css/bootstrap.min.css" rel="stylesheet" />
+
+<link href="/css/non-responsive.css" rel="stylesheet" />
+<link rel="stylesheet" href="/css/w3.css" />
+
+<link rel="stylesheet" href="/css/font.css" />
+<!-- Custom styles for this template -->
+<link href="/css/style.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+	<div th:fragment="body-bottom-scripts">
+		<script th:src="@{/js/jquery.min.js}"></script>
+		<script th:src="@{/js/bootstrap.min.js}"></script>
+		<script th:src="@{/js/jquery.dataTables.min.js}"></script>
+		<script th:src="@{/js/dataTables.bootstrap.min.js}"></script>
+	</div>
+</body>
+</html>
