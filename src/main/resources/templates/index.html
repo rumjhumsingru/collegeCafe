@@ -41,11 +41,15 @@
 	</div>
 	<div id="site-header">
 		<header id="header" class="header-block-top">
-			<div class="container">
-				<div class="row">
+			<div class="container" style=" width: 100%;">
+			
+				<div class="row">		 
+				
 					<div class="main-menu">
 						<!-- navbar -->
-						<nav class="navbar navbar-default" id="mainNav">
+						<span class="block-title" style="padding-left: 30px; padding-top: 20px; font-size: 35px; float: left;">Cafe9</span>
+						<center>
+						<nav class="navbar navbar-default" id="mainNav" style="width: 1170px; ">
 							<div class="navbar-header">
 								<button type="button" class="navbar-toggle collapsed"
 									data-toggle="collapse" data-target="#navbar"
@@ -58,7 +62,7 @@
 							</div>
 							<div id="navbar" class="navbar-collapse collapse">
 								<ul class="nav navbar-nav navbar-left">
-									<li class="active"><a href="#banner">Home</a></li>
+										<li class="active"><a href="#banner">Home</a></li>
 									<li><a href="#about">About us</a></li>
 									<li><a href="#menu">Top Sellers</a></li>
 									<li><a href="#our_team">Team</a></li>
@@ -75,8 +79,7 @@
 											<li th:each="announcement: ${announcementList}"><label
 												style="padding-left: 10px; font-size: 15px; color: black;"
 												th:text="${announcement.heading}"></label>
-												<p
-													th:text="${announcement.description}"
+												<p th:text="${announcement.description}"
 													style="padding-left: 10px; color: black; line-height: normal;"></p>
 												<hr id="announce" /></li>
 
@@ -90,6 +93,7 @@
 							</div>
 							<!-- end nav-collapse -->
 						</nav>
+						</center>
 						<!-- end navbar -->
 					</div>
 				</div>
@@ -113,7 +117,7 @@
 									data-colors="red"></span><span class="cursor"
 									data-cursorDisplay="_" data-owner="some-id"></span>
 							</h1>
-							<p>Welcome to the Cafeteria! Order with us to fulfill your
+							<p style="margin-top: 10px;">Welcome to the <span class="cafeTIAA">CafeTIAA!</span> Order with us to fulfill your
 								food cravings!</p>
 							<div class="book-btn">
 								<a th:href="@{/menu}"
@@ -325,277 +329,280 @@
 						<div class="slider slider-single">
 							<div>
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-									<a th:href="@{/searchByCategory?category=Starters}"><div class="offer-item">
-										<img src="/image/Menu/Veg/Starters/Garlic_Cheese_Bread.webp"
-											style="height: 110px; width: 110px;" alt=""
-											class="img-responsive" />
-										<div>
-											<h3>
-											<b>GARLIC CHEESE BREAD</b>
-											</h3>
-											<p>Enhanced with a topping of mozzarella cheese and
-												gratinated.</p>
-										</div>
-										<span class="offer-price">₹140</span>
-									</div></a>
+									<a th:href="@{/searchByCategory?category=Starters}"><div
+											class="offer-item">
+											<img src="/image/Menu/Veg/Starters/Garlic_Cheese_Bread.webp"
+												style="height: 110px; width: 110px;" alt=""
+												class="img-responsive" />
+											<div>
+												<h3>
+													<b>GARLIC CHEESE BREAD</b>
+												</h3>
+												<p>Enhanced with a topping of mozzarella cheese and
+													gratinated.</p>
+											</div>
+											<span class="offer-price">₹140</span>
+										</div></a>
 								</div>
 								<!-- end col -->
 
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-									<a th:href="@{/searchByCategory?category=Starters}"><div class="offer-item">
-										<img
-											src="/image/Menu/Non-Veg/Starters/Spicy_Chicken_Wings.webp"
-											style="height: 110px; width: 110px;" alt=""
-											class="img-responsive" />
-										<div>
-											<h3>
-												<b>BBQ CHICKEN WINGS</b>
-											</h3>
-											<p>Tender chicken wings deep fried until crispy and
-												glazed with BBQ sauce ( Smokey )</p>
-										</div>
-										<span class="offer-price">₹210</span>
-									</div></a>
+									<a th:href="@{/searchByCategory?category=Starters}"><div
+											class="offer-item">
+											<img
+												src="/image/Menu/Non-Veg/Starters/Spicy_Chicken_Wings.webp"
+												style="height: 110px; width: 110px;" alt=""
+												class="img-responsive" />
+											<div>
+												<h3>
+													<b>BBQ CHICKEN WINGS</b>
+												</h3>
+												<p>Tender chicken wings deep fried until crispy and
+													glazed with BBQ sauce ( Smokey )</p>
+											</div>
+											<span class="offer-price">₹210</span>
+										</div></a>
 								</div>
 								<!-- end col -->
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-									<a th:href="@{/searchByCategory?category=Starters}"><div class="offer-item">
-										<img src="/image/Menu/Veg/Starters/Potato_Chilli_Shots.webp"
-											style="height: 110px; width: 110px;" alt=""
-											class="img-responsive" />
-										<div>
-											<h3>
-												<b>POTATO CHILLI SHOTS</b>
-											</h3>
-											<p>Potato chilli shots served with mayo dip to surprise
-												your tingling tastebuds....</p>
-										</div>
-										<span class="offer-price">₹170</span>
-									</div></a>
+									<a th:href="@{/searchByCategory?category=Starters}"><div
+											class="offer-item">
+											<img src="/image/Menu/Veg/Starters/Potato_Chilli_Shots.webp"
+												style="height: 110px; width: 110px;" alt=""
+												class="img-responsive" />
+											<div>
+												<h3>
+													<b>POTATO CHILLI SHOTS</b>
+												</h3>
+												<p>Potato chilli shots served with mayo dip to surprise
+													your tingling tastebuds....</p>
+											</div>
+											<span class="offer-price">₹170</span>
+										</div></a>
 								</div>
 								<!-- end col -->
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-									<a th:href="@{/searchByCategory?category=Starters}"><div class="offer-item">
-										<img src="/image/Menu/Non-Veg/Starters/cheesyChickenfry.jpg"
-											style="height: 110px; width: 110px;" alt=""
-											class="img-responsive" />
-										<div>
-											<h3>
-												<b>CHEESY CHICKEN FRY</b>
-											</h3>
-											<p>Jazz up your meal with cheesy chicken fry!</p>
-										</div>
-										<span class="offer-price">₹180</span>
-									</div></a>
+									<a th:href="@{/searchByCategory?category=Starters}"><div
+											class="offer-item">
+											<img src="/image/Menu/Non-Veg/Starters/cheesyChickenfry.jpg"
+												style="height: 110px; width: 110px;" alt=""
+												class="img-responsive" />
+											<div>
+												<h3>
+													<b>CHEESY CHICKEN FRY</b>
+												</h3>
+												<p>Jazz up your meal with cheesy chicken fry!</p>
+											</div>
+											<span class="offer-price">₹180</span>
+										</div></a>
 								</div>
 								<!-- end col -->
 							</div>
 							<a th:href="@{/searchByCategory?category=Main Course}"><div>
-								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-									<div class="offer-item">
-										<img src="/image/Menu/Veg/Main Course/Lachha_Paratha.webp"
-											style="height: 110px; width: 110px;" alt=""
-											class="img-responsive" />
-										<div>
-											<h3>
-												<b>ALOO PARATHA</b>
-											</h3>
-											<p>Stuffed paratha with aloo and spices, served with butter and dahi.</p>
+									<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+										<div class="offer-item">
+											<img src="/image/Menu/Veg/Main Course/Lachha_Paratha.webp"
+												style="height: 110px; width: 110px;" alt=""
+												class="img-responsive" />
+											<div>
+												<h3>
+													<b>ALOO PARATHA</b>
+												</h3>
+												<p>Stuffed paratha with aloo and spices, served with
+													butter and dahi.</p>
+											</div>
+											<span class="offer-price">₹140</span>
 										</div>
-										<span class="offer-price">₹140</span>
 									</div>
-								</div>
-								<!-- end col -->
-								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-									<div class="offer-item">
-										<img src="/image/Menu/Non-Veg/Main Course/Chicken_Masala.webp"
-											style="height: 110px; width: 110px;" alt=""
-											class="img-responsive" />
-										<div>
-											<h3>
-												<b>CHICKEN TIKKA MASALA</b>
-											</h3>
-											<p>Pieces of chicken cooked in rich medium spiced masala.</p>
+									<!-- end col -->
+									<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+										<div class="offer-item">
+											<img
+												src="/image/Menu/Non-Veg/Main Course/Chicken_Masala.webp"
+												style="height: 110px; width: 110px;" alt=""
+												class="img-responsive" />
+											<div>
+												<h3>
+													<b>CHICKEN TIKKA MASALA</b>
+												</h3>
+												<p>Pieces of chicken cooked in rich medium spiced
+													masala.</p>
+											</div>
+											<span class="offer-price">₹200</span>
 										</div>
-										<span class="offer-price">₹200</span>
 									</div>
-								</div>
-								<!-- end col -->
+									<!-- end col -->
 
-								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-									<div class="offer-item">
-										<img src="/image/Menu/Veg/Main Course/dalMakhani.jpg"
-											style="height: 110px; width: 110px;" alt=""
-											class="img-responsive" />
-										<div>
-											<h3>
-												<b>DAL MAKHANI</b>
-											</h3>
-											<p>Black Gram And Kidney Beans Slow Cooked With Homemade
-												Butter, Hints Of Mint And Ginger And Onion.</p>
+									<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+										<div class="offer-item">
+											<img src="/image/Menu/Veg/Main Course/dalMakhani.jpg"
+												style="height: 110px; width: 110px;" alt=""
+												class="img-responsive" />
+											<div>
+												<h3>
+													<b>DAL MAKHANI</b>
+												</h3>
+												<p>Black Gram And Kidney Beans Slow Cooked With Homemade
+													Butter, Hints Of Mint And Ginger And Onion.</p>
+											</div>
+											<span class="offer-price">₹160</span>
 										</div>
-										<span class="offer-price">₹160</span>
 									</div>
-								</div>
-								<!-- end col -->
-								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-									<div class="offer-item">
-										<img
-											src="/image/Menu/Non-Veg/Main Course/Smoked_Chicken_Curry.webp"
-											style="height: 110px; width: 110px;" alt=""
-											class="img-responsive" />
-										<div>
-											<h3>
-												<b>SMOKED CHICKEN CURRY</b>
-											</h3>
-											<p>Succulent chicken cooked in a smokey Indian spiced
-												gravy, topped with butter and cream for an enriching taste.</p>
+									<!-- end col -->
+									<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+										<div class="offer-item">
+											<img
+												src="/image/Menu/Non-Veg/Main Course/Smoked_Chicken_Curry.webp"
+												style="height: 110px; width: 110px;" alt=""
+												class="img-responsive" />
+											<div>
+												<h3>
+													<b>SMOKED CHICKEN CURRY</b>
+												</h3>
+												<p>Succulent chicken cooked in a smokey Indian spiced
+													gravy, topped with butter and cream for an enriching taste.</p>
+											</div>
+											<span class="offer-price">₹190</span>
 										</div>
-										<span class="offer-price">₹190</span>
 									</div>
-								</div>
-								<!-- end col -->
-							</div></a>
-							
-							<a th:href="@{/searchByCategory?category=Desserts}"><div>
-								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-									<div class="offer-item">
-										<img src="/image/Menu/Veg/Desserts/Hazelnut_Cheesecake.jfif"
-											style="height: 110px; width: 110px;" alt=""
-											class="img-responsive" />
-										<div>
-											<h3>
-												<b>HAZELNUT CHEESECAKE</b>
-											</h3>
-											<p>Our version of classic baked hazelnut cheesecake</p>
+									<!-- end col -->
+								</div></a> <a th:href="@{/searchByCategory?category=Desserts}"><div>
+									<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+										<div class="offer-item">
+											<img src="/image/Menu/Veg/Desserts/Hazelnut_Cheesecake.jfif"
+												style="height: 110px; width: 110px;" alt=""
+												class="img-responsive" />
+											<div>
+												<h3>
+													<b>HAZELNUT CHEESECAKE</b>
+												</h3>
+												<p>Our version of classic baked hazelnut cheesecake</p>
+											</div>
+											<span class="offer-price">₹220</span>
 										</div>
-										<span class="offer-price">₹220</span>
 									</div>
-								</div>
-								<!-- end col -->
-								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-									<div class="offer-item">
-										<img src="/image/Menu/Non-Veg/Desserts/Blueberry_Cake.jpg"
-											style="height: 110px; width: 110px;" alt=""
-											class="img-responsive" />
-										<div>
-											<h3>
-												<b>BLUEBERRY CHEESECAKE</b>
-											</h3>
-											<p>Velvety Smooth Cheesecake with a burst of tarty
-												Blueberries. Drive away your blues with every bite!</p>
+									<!-- end col -->
+									<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+										<div class="offer-item">
+											<img src="/image/Menu/Non-Veg/Desserts/Blueberry_Cake.jpg"
+												style="height: 110px; width: 110px;" alt=""
+												class="img-responsive" />
+											<div>
+												<h3>
+													<b>BLUEBERRY CHEESECAKE</b>
+												</h3>
+												<p>Velvety Smooth Cheesecake with a burst of tarty
+													Blueberries. Drive away your blues with every bite!</p>
+											</div>
+											<span class="offer-price">₹200</span>
 										</div>
-										<span class="offer-price">₹200</span>
 									</div>
-								</div>
-								<!-- end col -->
-								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-									<div class="offer-item">
-										<img src="/image/Menu/Veg/Desserts/Rose_Phirni.webp"
-											style="height: 110px; width: 110px;" alt=""
-											class="img-responsive" />
-										<div>
-											<h3>
-												<b>ROSE PHIRNI</b>
-											</h3>
-											<p>Slow-cooked to perfection, this traditional sweet
-												pudding made with milk, cream and nuts and laced with rose
-												petals is the perfect coolant for Indian summers (Served
-												cold)...</p>
+									<!-- end col -->
+									<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+										<div class="offer-item">
+											<img src="/image/Menu/Veg/Desserts/Rose_Phirni.webp"
+												style="height: 110px; width: 110px;" alt=""
+												class="img-responsive" />
+											<div>
+												<h3>
+													<b>ROSE PHIRNI</b>
+												</h3>
+												<p>Slow-cooked to perfection, this traditional sweet
+													pudding made with milk, cream and nuts and laced with rose
+													petals is the perfect coolant for Indian summers (Served
+													cold)...</p>
+											</div>
+											<span class="offer-price">₹150</span>
 										</div>
-										<span class="offer-price">₹150</span>
 									</div>
-								</div>
-								<!-- end col -->
-								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-									<div class="offer-item">
-										<img src="/image/Menu/Non-Veg/Desserts/Red_Velvet_Cake.jpg"
-											style="height: 110px; width: 110px;" alt=""
-											class="img-responsive" />
-										<div>
-											<h3>
-												<b>RED VELVET CAKE</b>
-											</h3>
-											<p>A slice of Rich Red Velvet Pastry with light and
-												fluffy vanilla butter cream frosting is a great way to make
-												you and that friend of yours very happy.</p>
+									<!-- end col -->
+									<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+										<div class="offer-item">
+											<img src="/image/Menu/Non-Veg/Desserts/Red_Velvet_Cake.jpg"
+												style="height: 110px; width: 110px;" alt=""
+												class="img-responsive" />
+											<div>
+												<h3>
+													<b>RED VELVET CAKE</b>
+												</h3>
+												<p>A slice of Rich Red Velvet Pastry with light and
+													fluffy vanilla butter cream frosting is a great way to make
+													you and that friend of yours very happy.</p>
+											</div>
+											<span class="offer-price">₹220</span>
 										</div>
-										<span class="offer-price">₹220</span>
 									</div>
-								</div>
-								<!-- end col -->
-							</div></a>
-							
-							<a th:href="@{/searchByCategory?category=Beverages}"><div>
-								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-									<div class="offer-item">
-										<img src="/image/Menu/Veg/Beverages/Mocha_Freddo.webp"
-											style="height: 110px; width: 110px;" alt=""
-											class="img-responsive" />
-										<div>
-											<h3>
-												<b>MOCHA FREDDO</b>
-											</h3>
-											<p>Coffee with rich mocha sauce blended with milk and
-												ice. Topped with sweetened whipped cream.</p>
+									<!-- end col -->
+								</div></a> <a th:href="@{/searchByCategory?category=Beverages}"><div>
+									<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+										<div class="offer-item">
+											<img src="/image/Menu/Veg/Beverages/Mocha_Freddo.webp"
+												style="height: 110px; width: 110px;" alt=""
+												class="img-responsive" />
+											<div>
+												<h3>
+													<b>MOCHA FREDDO</b>
+												</h3>
+												<p>Coffee with rich mocha sauce blended with milk and
+													ice. Topped with sweetened whipped cream.</p>
+											</div>
+											<span class="offer-price">₹200</span>
 										</div>
-										<span class="offer-price">₹200</span>
 									</div>
-								</div>
-								<!-- end col -->
-								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-									<div class="offer-item">
-										<img src="/image/Menu/Veg/Beverages/Cappuccino.webp"
-											style="height: 110px; width: 110px;" alt=""
-											class="img-responsive" />
-										<div>
-											<h3>
-												<b>CAPPUCCINO</b>
-											</h3>
-											<p>Dark, rich espresso and bittersweet cocoa lies in wait
-												under a smoothed and stretched layer of thick foam.</p>
+									<!-- end col -->
+									<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+										<div class="offer-item">
+											<img src="/image/Menu/Veg/Beverages/Cappuccino.webp"
+												style="height: 110px; width: 110px;" alt=""
+												class="img-responsive" />
+											<div>
+												<h3>
+													<b>CAPPUCCINO</b>
+												</h3>
+												<p>Dark, rich espresso and bittersweet cocoa lies in
+													wait under a smoothed and stretched layer of thick foam.</p>
+											</div>
+											<span class="offer-price">₹99</span>
 										</div>
-										<span class="offer-price">₹99</span>
 									</div>
-								</div>
-								<!-- end col -->
-								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-									<div class="offer-item">
-										<img
-											src="/image/Menu/Veg/Beverages/Mabby_Strawberry_Shake.webp"
-											style="height: 110px; width: 110px;" alt=""
-											class="img-responsive" />
-										<div>
-											<h3>
-												<b>MABBY STRAWBERRY SHAKE</b>
-											</h3>
-											<p>Heavenly delightful, palatable, and healthy shake
-												filled with the sweetness of strawberries.</p>
+									<!-- end col -->
+									<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+										<div class="offer-item">
+											<img
+												src="/image/Menu/Veg/Beverages/Mabby_Strawberry_Shake.webp"
+												style="height: 110px; width: 110px;" alt=""
+												class="img-responsive" />
+											<div>
+												<h3>
+													<b>MABBY STRAWBERRY SHAKE</b>
+												</h3>
+												<p>Heavenly delightful, palatable, and healthy shake
+													filled with the sweetness of strawberries.</p>
+											</div>
+											<span class="offer-price">₹160</span>
 										</div>
-										<span class="offer-price">₹160</span>
 									</div>
-								</div>
-								<!-- end col -->
+									<!-- end col -->
 
-								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-									<div class="offer-item">
-										<img src="/image/Menu/Veg/Beverages/Cafe_Mocha.webp"
-											style="height: 110px; width: 110px;" alt=""
-											class="img-responsive" />
-										<div>
-											<h3>
-												<b>Cafe Mocha</b>
-											</h3>
-											<p>We combine our rich, full-bodied espresso with
-												bittersweet mocha sauce and steamed milk, then top it off
-												with sweetened whipped cream.</p>
+									<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+										<div class="offer-item">
+											<img src="/image/Menu/Veg/Beverages/Cafe_Mocha.webp"
+												style="height: 110px; width: 110px;" alt=""
+												class="img-responsive" />
+											<div>
+												<h3>
+													<b>Cafe Mocha</b>
+												</h3>
+												<p>We combine our rich, full-bodied espresso with
+													bittersweet mocha sauce and steamed milk, then top it off
+													with sweetened whipped cream.</p>
+											</div>
+											<span class="offer-price">₹180</span>
 										</div>
-										<span class="offer-price">₹180</span>
 									</div>
-								</div>
-								<!-- end col -->
+									<!-- end col -->
 
-							</div></a>
+								</div></a>
 						</div>
 					</div>
 					<!-- end tab-menu -->
@@ -1136,7 +1143,7 @@
 							</div>
 							<!-- end footer-box-a -->
 						</div>
-						
+
 						<!-- end col -->
 						<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
 							style="margin-left: 50px;">

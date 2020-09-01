@@ -499,11 +499,11 @@
 											<li class="breadcrumb-item active"><a
 												th:href="@{/listOfShippingAddresses}"
 												th:style="${listOfShippingAddresses}? 'color:red'"><b>List
-													of Shipping Addresses</b></a></li>
+													of Delivery Address</b></a></li>
 											<li class="breadcrumb-item active"><a
 												th:href="@{/addNewShippingAddress}"
 												th:style="${addNewShippingAddress}? 'color:red'"><b>Add(Update)
-													Shipping Address</b></a></li>
+													Delivery Address</b></a></li>
 										</ol>
 
 										<div th:if="${listOfShippingAddresses}" style="margin-top: -20px;">
@@ -512,7 +512,7 @@
 													<thead>
 														<tr>
 															<th>Default</th>
-															<th>Shipping Address</th>
+															<th>Delivery Address</th>
 															<th>Operations</th>
 														</tr>
 													</thead>
@@ -552,36 +552,35 @@
 												<!-- Shipping Address -->
 												
 												<div style="margin-top: -20px;">
-													<h4><u>Shipping Address</u></h4>
+													<h4><u>Delivery Address</u></h4>
 												</div>
 												
 												<div class="form-group" style="margin-top: -20px;">
-													<label for="shippingName">Name</label> <input type="text"
+													<label for="shippingName">Employee Name</label> <input type="text"
 														class="form-control" id="shippingName"
-														pattern="[a-zA-Z]+[a-zA-Z ]+" placeholder="Receiver Name"
+														pattern="[a-zA-Z]+[a-zA-Z ]+" placeholder="Enter employee name"
 														th:name="userShippingName" required="required"
 														th:value="${userShipping.userShippingName}" />
 												</div>
 												<div class="form-group">
-													<label for="shippingAddress">Street Address</label> <input
+													<label for="shippingAddress">Desk Location</label> <input
 														type="text" class="form-control" id="shippingAddress"
-														placeholder="Street Address 1"
+														placeholder="Enter desk location"
 														th:name="userShippingStreet1" required="required"
-														th:value="${userShipping.userShippingStreet1}" /> <input
-														type="text" class="form-control" 
-														placeholder="Street Address 2"
-														th:name="userShppingStreet2"
-														th:value="${userShipping.userShippingStreet2}" />
+														th:value="${userShipping.userShippingStreet1}" />
 												</div>
 
 												<div class="row" style="margin-top: -55px;">
 													<div class="col-xs-4">
 														<div class="form-group">
-															<label for="shippingCity">City</label> <input
-																type="text" class="form-control" id="shippingCity"
-																placeholder="Shipping City" th:name="userShippingCity"
-																required="required"
-																th:value="${userShipping.userShippingCity}" />
+															<label for="shippingCity">TIAA Branch</label>
+																<select class="form-control" th:name="userShippingCity" id="shippingCity"
+																		required="required" style="color: black;" 
+																		th:value="${userShipping.userShippingCity}" >
+																		<option th:text="${userShipping.userShippingCity}" hidden="hidden"></option>
+																		<option value="Pune">Pune</option>
+																		<option value="Mumbai">Mumbai</option>	
+																</select>
 														</div>
 													</div>
 													<div class="col-xs-4" hidden="hidden">
@@ -601,9 +600,9 @@
 													</div>
 													<div class="col-xs-4">
 														<div class="form-group">
-															<label for="shippingZipcode">Zipcode</label> <input
+															<label for="shippingZipcode">Employee ID</label> <input
 																type="text" class="form-control" id="shippingZipcode"
-																placeholder="Shipping Zipcode" pattern="[0-9]{6}"
+																placeholder="Enter employee ID" pattern="[0-9]{5}"
 																th:name="userShippingZipcode" required="required"
 																th:value="${userShipping.userShippingZipcode}" />
 														</div>
