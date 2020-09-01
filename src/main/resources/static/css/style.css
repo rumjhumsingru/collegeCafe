@@ -51,7 +51,23 @@ body {
 	border: 1px solid #ddd;
 }
 
+.menu-type-all  {
+width: 33.33333%;
 
+float: left;
+}
+
+.menu-type-veg  {
+width: 33.33333%;
+
+float: left;
+}
+
+.menu-type-nonveg  {
+width: 33.33333%;
+
+float: left;
+}
 #square {
 	height: 50px;
 	width: 50px;
@@ -63,6 +79,24 @@ body {
 	z-index: 2;
 	color: #fff;
 	border-right: 4px solid darkblue;
+}
+
+.menu-type-all.active, .menu-type-all.active:focus, .menu-type-all.active:hover
+	{
+	z-index: 2;
+	background-color: #ffc107;
+}
+
+.menu-type-veg.active, .menu-type-veg.active:focus, .menu-type-veg.active:hover
+	{
+	z-index: 2;
+	background-color: #4CAF50;
+}
+
+.menu-type-nonveg.active, .menu-type-nonveg.active:focus, .menu-type-nonveg.active:hover
+	{
+	z-index: 2;
+	background-color: #f44336;
 }
 
 

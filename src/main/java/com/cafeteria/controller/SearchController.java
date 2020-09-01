@@ -109,10 +109,15 @@ public class SearchController {
 			model.addAttribute("user", user);
 		}
 		
+		
 		String classActiveType = "active"+type;
 		classActiveType = classActiveType.replaceAll("\\s+", "");
 		classActiveType = classActiveType.replaceAll("&", "");
 		model.addAttribute(classActiveType, true);
+		if(type.matches("NonVeg"))
+		{
+			 type = "Non-Veg";
+		}
 		List<Item> itemList = itemService.findByType(type);
 		
 		if(principal!=null)

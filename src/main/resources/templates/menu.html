@@ -70,15 +70,15 @@
 			
 			<div class="w3-row w3-center"
 				style="color: white; font-size: 20px; width: 800px; border: 2px solid black; margin-top: -20px;">
-				<a th:href="@{/menu(category='all')}"
+				<a th:href="@{/menu(category='all')}" class="menu-type-all"
 					th:classappend="${activeAll}? 'active'">
-					<div class="w3-col s4 tablink w3-padding-large w3-hover-orange">All</div>
-				</a> <a th:href="@{/searchByType(type='Veg')}"
+					<div class=" tablink w3-padding-large w3-hover-amber">All</div>
+				</a> <a th:href="@{/searchByType(type='Veg')}" class="menu-type-veg"
 					th:classappend="${activeVeg}? 'active'">
-					<div class="w3-col s4 tablink w3-padding-large w3-hover-green ">Veg</div>
-				</a> <a th:href="@{/searchByType(type='Non-Veg')}"
+					<div class="tablink w3-padding-large w3-hover-green ">Veg</div>
+				</a> <a th:href="@{/searchByType(type='NonVeg')}" class="menu-type-nonveg"
 					th:classappend="${activeNonVeg}? 'active'">
-					<div class="w3-col s4 tablink w3-padding-large w3-hover-red">Non-Veg</div>
+					<div class="tablink w3-padding-large w3-hover-red">Non-Veg</div>
 				</a>
 			</div>
 

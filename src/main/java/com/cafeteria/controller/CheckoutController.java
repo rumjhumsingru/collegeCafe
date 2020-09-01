@@ -181,16 +181,6 @@ public class CheckoutController {
 			billingAddress.setBillingAddressZipcode(shippingAddress.getShippingAddressZipcode());
 		}
 
-//		if (shippingAddress.getShippingAddressStreet1().isEmpty() || shippingAddress.getShippingAddressCity().isEmpty()
-//				|| shippingAddress.getShippingAddressState().isEmpty()
-//				|| shippingAddress.getShippingAddressName().isEmpty()
-//				|| shippingAddress.getShippingAddressZipcode().isEmpty() || payment.getCardNumber().isEmpty()
-//				|| payment.getCvc() == 0 || billingAddress.getBillingAddressStreet1().isEmpty()
-//				|| billingAddress.getBillingAddressCity().isEmpty() || billingAddress.getBillingAddressState().isEmpty()
-//				|| billingAddress.getBillingAddressName().isEmpty()
-//				|| billingAddress.getBillingAddressZipcode().isEmpty())
-//			return "redirect:/checkout?id=" + shoppingCart.getId() + "&missingRequiredField=true";
-		
 		User user = userService.findByUsername(principal.getName());
 		
 		Order order = orderService.createOrder(shoppingCart, shippingAddress, billingAddress, payment, user);
