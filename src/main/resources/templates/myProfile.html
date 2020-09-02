@@ -183,7 +183,7 @@
 													<td
 														th:with="total=${order.orderTotal+order.orderTotal*0.06}"
 														data-th-text="${#numbers.formatDecimal(total, 0, 2)}"></td>
-													<td data-th-text="${order.orderStatus}"></td>
+													<td data-th-text="${order.orderStatus}" style="color: green; font-weight: bold;"></td>
 												</tr>
 											</tbody>
 										</table>
@@ -205,28 +205,32 @@
 																	<strong>Payment Information</strong>
 																</div>
 																<div class="panel-body">
-																	<label style="font-size: 14px;">Card Name: &nbsp;</label><span th:text="${order.payment.holderName}"></span><br /> 
-																	<label style="font-size: 14px;">Card Number: &nbsp;</label><span
+																	<label style="font-size: 14px; font-weight: normal;">Card Name: &nbsp;</label><b><span th:text="${order.payment.holderName}"></span></b><br /> 
+																	<label style="font-size: 14px; font-weight: normal;">Card Number: &nbsp;</label><b><span
 																	    
 																		th:text="${#numbers.formatInteger(order.payment.cardNumber, 4)}">Card
-																		Number</span><br />
+																		Number</span></b><br />
 																</div>
 															</div>
 														</div>
 														<div class="col-xs-4">
 															<div class="panel panel-default height">
 																<div class="panel-heading">
-																	<strong>Shipping Details</strong>
+																	<strong>Delivery Details</strong>
 																</div>
 																<div class="panel-body">
-																	<span
-																		th:text="${order.shippingAddress.shippingAddressName}"></span><br />
-																	<span
-																		th:text="${order.shippingAddress.shippingAddressStreet1}+' '+${order.shippingAddress.shippingAddressStreet2}"></span><br />
-																	<span
-																		th:text="${order.shippingAddress.shippingAddressCity}"></span><br />
-																	<span
-																		th:text="${order.shippingAddress.shippingAddressZipcode}"></span><br />
+																<label style="font-weight: normal;">Employee Name:</label>
+																	<b><span
+																		th:text="${order.shippingAddress.shippingAddressName}"></span></b><br />
+																	<label style="font-weight: normal;">Desk Location:</label>
+																	<b><span
+																		th:text="${order.shippingAddress.shippingAddressStreet1}"></span></b><br />
+																	<label style="font-weight: normal;">TIAA Branch:</label>
+																	<b><span
+																		th:text="${order.shippingAddress.shippingAddressCity}"></span></b><br />
+																	<label style="font-weight: normal;">Employee ID:</label>
+																	<b><span 
+																		th:text="${order.shippingAddress.shippingAddressZipcode}"></span></b><br />
 																</div>
 															</div>
 														</div>

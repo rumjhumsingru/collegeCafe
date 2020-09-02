@@ -55,8 +55,8 @@ $(document).ready(function(){
 
 function validateAddress() {
 	var x = document.forms["myForm"]["shippingAddressName"].value;
-	if (x == "") {
-		document.getElementById('address_validate').innerHTML = "Employee name is required";
+	if (x == "" || !((/^[a-zA-Z ]{2,30}$/).test(x))) {
+		document.getElementById('address_validate').innerHTML = "Employee name is empty or invalid";
 
 		var fade = document.getElementById("address_validate"); // get required element
 		fade.style.opacity = 1; // set opacity for the element to 1
@@ -89,8 +89,8 @@ function validateAddress() {
 		return false;
 	}
 	var x = document.forms["myForm"]["shippingAddressZipcode"].value;
-	if (x == "") {
-		document.getElementById('address_validate').innerHTML = "Employee ID is required";
+	if (x == "" || !((/^[0-9]{5}$/).test(x))) {
+		document.getElementById('address_validate').innerHTML = "Employee ID is empty or Invalid";
 
 		var fade = document.getElementById("address_validate"); // get required element
 		fade.style.opacity = 1; // set opacity for the element to 1
@@ -126,8 +126,8 @@ function validateAddress() {
 }
 function validatePayment() {
 	var x = document.forms["myForm"]["holderName"].value;
-	if (x == "") {
-		document.getElementById('payment_validate').innerHTML = "Card holder name is required";
+	if (x == "" || !((/^[a-zA-Z ]{3,30}$/).test(x))) {
+		document.getElementById('payment_validate').innerHTML = "Card name empty or invalid";
 
 		var fade = document.getElementById("payment_validate"); // get required element
 		fade.style.opacity = 1; // set opacity for the element to 1
