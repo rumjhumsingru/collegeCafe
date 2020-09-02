@@ -337,7 +337,7 @@
 							<div class="row" style="margin-top: -50px;">
 								<div class="col-xs-7 text-left">Total before tax:</div>
 								<div class="col-xs-5 text-right">
-									₹<span th:text="${shoppingCart.grandTotal}"></span>
+									₹<span th:text="${shoppingCart.grandTotal}" id="totalBeforeTax"></span>
 								</div>
 							</div>
 							<div class="row" style="margin-top: -50px;">
@@ -357,7 +357,7 @@
 									<label style="font-size: 25px;"> <strong
 										style="color: darkred;">₹<span
 											th:with="total=${shoppingCart.grandTotal+shoppingCart.grandTotal*0.06}"
-											th:text="${#numbers.formatDecimal(total, 0 ,2)}"></span></strong>
+											th:value="${#numbers.formatDecimal(total, 0 ,2)}" th:text="${#numbers.formatDecimal(total, 0 ,2)}" id="cartTotal"></span></strong>
 									</label>
 								</div>
 							</div>
@@ -377,7 +377,13 @@
 	</div>
 	<!-- end of container -->
 
-
+<script>
+		var totalBeforeTax = document.getElementById("totalBeforeTax").innerText;
+  		var totalTax = document.getElementById("cartTotal").innerText;
+  		
+  		sessionStorage.setItem("cartTotalBeforeTax", totalBeforeTax);
+  		sessionStorage.setItem("cartTotalTax", totalTax);
+</script>
 	<div th:replace="common/header :: body-bottom-scripts" />
 	<script th:src="@{/js/scripts.js}"></script>
 	
