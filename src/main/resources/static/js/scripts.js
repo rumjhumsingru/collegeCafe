@@ -53,7 +53,128 @@ $(document).ready(function(){
 	$("#txtNewPassword").keyup(checkPasswordMatch);
 });
 
+function validateAddress() {
+	var x = document.forms["myForm"]["shippingAddressName"].value;
+	if (x == "") {
+		document.getElementById('address_validate').innerHTML = "Employee name is required";
 
+		var fade = document.getElementById("address_validate"); // get required element
+		fade.style.opacity = 1; // set opacity for the element to 1
+		var timerId = setInterval(function() { // start interval loop
+			var opacity = fade.style.opacity; // get current opacity
+			if (opacity == 0) { // check if its 0 yet
+				clearInterval(timerId); // if so, exit from interval loop
+			} else {
+				fade.style.opacity = opacity - 0.05; // else remove 0.05 from opacity
+			}
+		}, 100); // run every 0.1 second
+
+		return false;
+	}
+	var x = document.forms["myForm"]["shippingAddressStreet1"].value;
+	if (x == "") {
+		document.getElementById('address_validate').innerHTML = "Desk location is required";
+
+		var fade = document.getElementById("address_validate"); // get required element
+		fade.style.opacity = 1; // set opacity for the element to 1
+		var timerId = setInterval(function() { // start interval loop
+			var opacity = fade.style.opacity; // get current opacity
+			if (opacity == 0) { // check if its 0 yet
+				clearInterval(timerId); // if so, exit from interval loop
+			} else {
+				fade.style.opacity = opacity - 0.05; // else remove 0.05 from opacity
+			}
+		}, 100); // run every 0.1 second
+
+		return false;
+	}
+	var x = document.forms["myForm"]["shippingAddressZipcode"].value;
+	if (x == "") {
+		document.getElementById('address_validate').innerHTML = "Employee ID is required";
+
+		var fade = document.getElementById("address_validate"); // get required element
+		fade.style.opacity = 1; // set opacity for the element to 1
+		var timerId = setInterval(function() { // start interval loop
+			var opacity = fade.style.opacity; // get current opacity
+			if (opacity == 0) { // check if its 0 yet
+				clearInterval(timerId); // if so, exit from interval loop
+			} else {
+				fade.style.opacity = opacity - 0.05; // else remove 0.05 from opacity
+			}
+		}, 100); // run every 0.1 second
+
+		return false;
+	}
+	var x = document.forms["myForm"]["shippingAddressCity"].value;
+	if (x == "") {
+		document.getElementById('address_validate').innerHTML = "Branch city is required";
+
+		var fade = document.getElementById("address_validate"); // get required element
+		fade.style.opacity = 1; // set opacity for the element to 1
+		var timerId = setInterval(function() { // start interval loop
+			var opacity = fade.style.opacity; // get current opacity
+			if (opacity == 0) { // check if its 0 yet
+				clearInterval(timerId); // if so, exit from interval loop
+			} else {
+				fade.style.opacity = opacity - 0.05; // else remove 0.05 from opacity
+			}
+		}, 100); // run every 0.1 second
+
+		return false;
+	}
+	return true;
+}
+function validatePayment() {
+	var x = document.forms["myForm"]["holderName"].value;
+	if (x == "") {
+		document.getElementById('payment_validate').innerHTML = "Card holder name is required";
+
+		var fade = document.getElementById("payment_validate"); // get required element
+		fade.style.opacity = 1; // set opacity for the element to 1
+		var timerId = setInterval(function() { // start interval loop
+			var opacity = fade.style.opacity; // get current opacity
+			if (opacity == 0) { // check if its 0 yet
+				clearInterval(timerId); // if so, exit from interval loop
+			} else {
+				fade.style.opacity = opacity - 0.05; // else remove 0.05 from opacity
+			}
+		}, 100); // run every 0.1 second
+		return false;
+	}
+	var x = document.forms["myForm"]["cardNumber"].value;
+	if (x == "" || !((/^[0-9]{13,16}$/).test(x))) {
+		document.getElementById('payment_validate').innerHTML = "Valid Card number is required";
+
+		var fade = document.getElementById("payment_validate"); // get required element
+		fade.style.opacity = 1; // set opacity for the element to 1
+		var timerId = setInterval(function() { // start interval loop
+			var opacity = fade.style.opacity; // get current opacity
+			if (opacity == 0) { // check if its 0 yet
+				clearInterval(timerId); // if so, exit from interval loop
+			} else {
+				fade.style.opacity = opacity - 0.05; // else remove 0.05 from opacity
+			}
+		}, 100); // run every 0.1 second
+		return false;
+	}
+	var x = document.forms["myForm"]["cvc"].value;
+	if (x == "" || !((/^[0-9]{3}$/).test(x))) {
+		document.getElementById('payment_validate').innerHTML = "3 digit CVV is required";
+
+		var fade = document.getElementById("payment_validate"); // get required element
+		fade.style.opacity = 1; // set opacity for the element to 1
+		var timerId = setInterval(function() { // start interval loop
+			var opacity = fade.style.opacity; // get current opacity
+			if (opacity == 0) { // check if its 0 yet
+				clearInterval(timerId); // if so, exit from interval loop
+			} else {
+				fade.style.opacity = opacity - 0.05; // else remove 0.05 from opacity
+			}
+		}, 100); // run every 0.1 second
+		return false;
+	}
+	return true;
+}
 
 /*function openMenu(evt, menuName) {
 	var i, x, tablinks;

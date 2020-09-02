@@ -37,7 +37,65 @@
 				
 			</div>
 		</div>
-		<div style="margin-left: 400px; border: 1px solid black; width: 700px;">
+		
+		
+								<div class="panel-body">
+
+
+									<div class="row">
+										<div class="col-xs-8">
+											<label>Products</label>
+										</div>
+										<div class="col-xs-2">
+											<label>Price</label>
+										</div>
+										<div class="col-xs-2">
+											<label>Qty</label>
+										</div>
+									</div>
+
+									<!-- display products in cart -->
+									<div class="row" th:each="cartItem : ${cartItemList}"
+										style="margin-top: -30px;">
+
+										<div class="col-xs-2">
+											<img class="img-responsive shelf-book"
+												th:src="@{http://54.175.217.57/itemImages/}+${cartItem.item.id}+'.png'"
+												style="width: 70px; height: 70px;" />
+
+										</div>
+										<div class="col-xs-6">
+											<div style="margin-left: 0px;">
+												<label style="font-size: 18px;"
+													th:text="${cartItem.item.name}"></label>
+											</div>
+										</div>
+
+										<div class="col-xs-2">
+											<label style="color: #db3208; font-size: large;"> ₹<span
+												th:text="${cartItem.item.ourPrice}"></span>
+											</label>
+										</div>
+
+										<div class="col-xs-2">
+											<label style="font-size: large;" th:text="${cartItem.qty}"></label>
+										</div>
+
+									</div>
+
+									<h4 class="col-xs-12 text-right">
+										<strong style="font-size: large;">Order Total (<span
+											th:text="${#lists.size(cartItemList)}"></span> items):
+										</strong> <span style="color: #db3208; font-size: large;">₹<span
+											th:text="${shoppingCart.grandTotal}"></span></span>
+									</h4>
+									<br /> <br />
+
+								</div>
+							</div>
+						
+		
+		<!-- <div style="margin-left: 400px; border: 1px solid black; width: 700px;">
 		<div class="row" style="margin-left: 30px;">
 			<div class="col-xs-8">
 				<label>Products</label>
@@ -52,7 +110,7 @@
 		</div>
 		
 
-		<!-- display products in cart -->
+		display products in cart
 		<div class="row" th:each="cartItem : ${cartItemList}"
 			style="margin-top: -30px; margin-left: 30px;">
 
@@ -74,9 +132,9 @@
 			</div>
 
 		</div>
-		</div>
+		</div> -->
 		<br/>
-	</div>
+
 
 	<!-- end of container -->
 
