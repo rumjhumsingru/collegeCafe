@@ -615,6 +615,10 @@ public class HomeController {
 		if (userService.findByEmail(user.getEmail())!=null) {
 			if(userService.findByEmail(user.getEmail()).getId() != currentUser.getId()) {
 				model.addAttribute("emailExists", true);
+//				model.addAttribute("listOfCreditCards", true);
+//				model.addAttribute("listOfShippingAddresses", true);
+//				model.addAttribute("userPaymentList", user.getUserPaymentList());
+//				model.addAttribute("userShippingList", user.getUserShippingList());
 				return "myProfile";
 			}
 		}
@@ -623,6 +627,10 @@ public class HomeController {
 		if (userService.findByUsername(user.getUsername())!=null) {
 			if(userService.findByUsername(user.getUsername()).getId() != currentUser.getId()) {
 				model.addAttribute("usernameExists", true);
+//				model.addAttribute("listOfCreditCards", true);
+//				model.addAttribute("listOfShippingAddresses", true);
+//				model.addAttribute("userPaymentList", user.getUserPaymentList());
+//				model.addAttribute("userShippingList", user.getUserShippingList());
 				return "myProfile";
 			}
 		}
@@ -636,7 +644,10 @@ public class HomeController {
 			} else {
 				model.addAttribute("incorrectPassword", true);
 				model.addAttribute("classActiveEdit", true);
-				
+//				model.addAttribute("listOfCreditCards", true);
+//				model.addAttribute("listOfShippingAddresses", true);
+//				model.addAttribute("userPaymentList", user.getUserPaymentList());
+//				model.addAttribute("userShippingList", user.getUserShippingList());
 				return "myProfile";
 			}
 		}
@@ -662,6 +673,10 @@ public class HomeController {
 		if(!(orderList == null))
 			Collections.reverse(orderList);
 		model.addAttribute("orderList", orderList);
+//		model.addAttribute("listOfCreditCards", true);
+//		model.addAttribute("listOfShippingAddresses", true);
+//		model.addAttribute("userPaymentList", user.getUserPaymentList());
+//		model.addAttribute("userShippingList", user.getUserShippingList());
 		
 		return "myProfile";
 	}
