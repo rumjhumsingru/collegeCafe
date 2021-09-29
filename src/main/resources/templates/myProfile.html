@@ -225,7 +225,7 @@
 																	<label style="font-weight: normal;">Desk Location:</label>
 																	<b><span
 																		th:text="${order.shippingAddress.shippingAddressStreet1}"></span></b><br />
-																	<label style="font-weight: normal;">TIAA Branch:</label>
+																	<label style="font-weight: normal;">Branch:</label>
 																	<b><span
 																		th:text="${order.shippingAddress.shippingAddressCity}"></span></b><br />
 																	<label style="font-weight: normal;">Employee ID:</label>
@@ -577,7 +577,7 @@
 												<div class="row" style="margin-top: -55px;">
 													<div class="col-xs-4">
 														<div class="form-group">
-															<label for="shippingCity">TIAA Branch</label>
+															<label for="shippingCity">Branch</label>
 																<select class="form-control" th:name="userShippingCity" id="shippingCity"
 																		required="required" style="color: black;" 
 																		th:value="${userShipping.userShippingCity}" >
